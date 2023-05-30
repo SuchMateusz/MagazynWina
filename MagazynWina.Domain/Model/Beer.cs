@@ -4,38 +4,40 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace MagazynWina.Domain.Model
-
 {
-    public class Wine : BaseModel
+    public class Beer : BaseModel
     {
-        public int TypeOfWine { get; set; }
         public int yearProduction { get; set; }
+        //public int Quantity { get; set; }
         public string Yeast { get; set; }
+
+        public string TypeOfBeer { get; set; }
+
         protected bool low { get; set; }
 
-        public Wine(int typeWineId, int wineId, string nameWine, int typeOfWine, byte blg, int year, ushort quantity, string yeast)
+        public Beer(int typeBeerId, int beerId, string nameBeer, int blg, int year, int quantity, string yeast, string typeOfBeer)
         {
-            TypeObjectId = typeWineId;
-            Id = wineId;
-            Name = nameWine;
-            TypeOfWine = typeOfWine;
+            TypeObjectId = typeBeerId;
+            Id = beerId;
+            Name = nameBeer;
             Blg = blg;
             yearProduction = year;
             Quantity = quantity;
             Yeast = yeast;
+            TypeOfBeer = typeOfBeer;
         }
-
-        public Wine() : this (1,0,"nameTest",0, 0,0, 0, "yeast")
+        public Beer() : this(2,0, "nameTest", 0, 0, 0, "yeast", "PaleAle")
         {
-            
+
         }
 
-        public void CheckValueWine (int quantityy)
+        public void CheckValueBeer(int quantityy)
         {
             string check = "";
-            if (quantityy <= 10)
+            if (quantityy <= 15)
             {
                 low = true;
             }
@@ -44,8 +46,8 @@ namespace MagazynWina.Domain.Model
 
             if (low == true)
             {
-            check = "Posiadasz już zbyt małą ilość do handlu";
-            }   
+                check = "Posiadasz już zbyt małą ilość do handlu";
+            }
             else
             {
                 check = "Posiadana ilość jest wystarczająca";

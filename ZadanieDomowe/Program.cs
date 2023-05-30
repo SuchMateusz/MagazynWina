@@ -1,5 +1,6 @@
 ﻿using MagazynWina.App;
 using MagazynWina.App.AbstractInteface;
+using MagazynWina.App.Common;
 using MagazynWina.App.Concrete;
 using MagazynWina.App.Manager;
 using MagazynWina.Domain;
@@ -17,11 +18,11 @@ namespace MagazynWina
         {
             MenuActionService actionService = new MenuActionService();
             WineService wineService = new WineService();
-            WineAppControl wineAppControl = new WineAppControl(actionService, wineService);
-            ListWineService listWineService = new ListWineService(wineService);
+            BeerService beerService = new BeerService();
+            FilesControl filesControl = new FilesControl();
+            WineAppControl wineAppControl = new WineAppControl(actionService, wineService, beerService);
 
-            Console.WriteLine("Welcom in my app");
-            
+            Console.WriteLine("Welcome in my application");
             
             while (true)
             {
@@ -40,26 +41,22 @@ namespace MagazynWina
                 switch (operation.KeyChar)
                 {
                     case '1':
-
-                       var newId = wineAppControl.AddNewWine();
-
+                        wineAppControl.AddNewObject();
                         break;
 
                     case '2':
-                        
-                        wineAppControl.GetAllWines();
-                        wineAppControl.DeleteWine();
+                        wineAppControl.DeleteObject();
                         break;
 
                     case '3':
-                        var allWines = wineAppControl.GetAllWines();
+                        wineAppControl.GetAllObjects();
                         break;
                     case '4':
-                        wineAppControl.wineDetail();
+                        wineAppControl.ObjectDetail();
                         break;
 
                     case '5':
-                        wineAppControl.UpdateWine();
+                        wineAppControl.UpdateObject();
                         break;
 
                     case '6':
@@ -67,12 +64,9 @@ namespace MagazynWina
                         break;
 
                     case '7':
-                        listWineService.readerFromFile();
+                        wineAppControl.OperationsOnFile();
                         break;
                     case '8':
-                        listWineService.saveToFile();
-                        break;
-                    case '9':
                         Environment.Exit(0);
                         break;
 
@@ -80,10 +74,7 @@ namespace MagazynWina
                         Console.WriteLine("\nWrong action you entered");
                         break;
                 }
-                
-
             }
         }
-
     }
 }

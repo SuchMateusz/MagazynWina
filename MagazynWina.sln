@@ -12,7 +12,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagazynWina.App", "MagazynW
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagazynWina.Domain", "MagazynWina.Domain\MagazynWina.Domain.csproj", "{9FAD88BD-4E17-4219-BB84-A2D82813F801}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse.Test", "Warehouse.Test\Warehouse.Test.csproj", "{91043BE5-A784-48C5-A0AD-04E22944D6E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagazynWina.Tests", "Warehouse.Test\MagazynWina.Tests.csproj", "{91043BE5-A784-48C5-A0AD-04E22944D6E9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

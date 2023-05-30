@@ -21,8 +21,4 @@ namespace MagazynWina.Domain
             MenuName = menuName;
         }
     }
-
-
-
-
 }

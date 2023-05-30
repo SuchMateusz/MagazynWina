@@ -9,18 +9,12 @@ namespace MagazynWina.App.AbstractInteface
 {
     public interface IService<T>
     {
-        List<T> Wines { get; set; }
-
-        List<T> GetAllWines();
-        int AddWine(T wine);
-        int UpdateWine(T wine);
-
-        void DeleteWine(T wine);
-
-        void SuggarAddWine();
-
-        T wineDetail(int Id);
-        T UpdateWineTestID(T wine);
-
+        List<T> Objects { get; set; }
+        List<T> GetAllObjects();
+        int AddNewObject(T obj);
+        int UpdateObject(T obj);
+        void DeleteObject(T obj);
+        T ObjectDetail(int Id);
+        //T UpdateWineTestID(T obj);
     }
 }
