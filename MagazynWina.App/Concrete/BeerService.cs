@@ -64,7 +64,7 @@ namespace MagazynWina.App.Concrete
             Beers = GetAllObjects();
             foreach (var beer in Beers)
             {
-                Console.WriteLine($"\n {Beers.Count} beer id: {beer.Id} beer name: {beer.Name} beer Blg: {beer.Blg} beer year: {beer.yearProduction} beer bootle: {beer.Quantity} beer yeast {beer.Yeast} beer {beer.TypeOfBeer}");
+                Console.WriteLine($"\n {Beers.Count} beer id: {beer.Id} beer name: {beer.Name} beer Blg: {beer.Blg} beer year: {beer.YearProduction} beer bootle: {beer.Quantity} beer yeast {beer.Yeast} beer {beer.TypeOfBeer}");
             }
             return Beers.Count();
         }

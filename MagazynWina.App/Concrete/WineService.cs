@@ -66,7 +66,7 @@ namespace MagazynWina.App.Concrete
             Wines = Wines.OrderBy(wine => wine.Id).ToList();
             foreach (var wine in Wines)
             {
-                Console.WriteLine($"\n wine id: {wine.Id} wine name: {wine.Name} wine type: {wine.TypeOfWine} wine Blg: {wine.Blg} wine year: {wine.yearProduction} wine bootle: {wine.Quantity} wine yeast: {wine.Yeast}");
+                Console.WriteLine($"\n wine id: {wine.Id} wine name: {wine.Name} wine type: {wine.TypeOfWine} wine Blg: {wine.Blg} wine year: {wine.YearProduction} wine bootle: {wine.Quantity} wine yeast: {wine.Yeast}");
             }
             return Wines.Count;
         }

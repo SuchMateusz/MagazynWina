@@ -11,7 +11,7 @@ namespace MagazynWina.Domain.Model
     public class Wine : BaseModel
     {
         public int TypeOfWine { get; set; }
-        public int yearProduction { get; set; }
+        public int YearProduction { get; set; }
         public string Yeast { get; set; }
         protected bool low { get; set; }
 
@@ -22,7 +22,7 @@ namespace MagazynWina.Domain.Model
             Name = nameWine;
             TypeOfWine = typeOfWine;
             Blg = blg;
-            yearProduction = year;
+            YearProduction = year;
             Quantity = quantity;
             Yeast = yeast;
         }

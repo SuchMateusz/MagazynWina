@@ -10,8 +10,7 @@ namespace MagazynWina.Domain.Model
 {
     public class Beer : BaseModel
     {
-        public int yearProduction { get; set; }
-        //public int Quantity { get; set; }
+        public int YearProduction { get; set; }
         public string Yeast { get; set; }
 
         public string TypeOfBeer { get; set; }
@@ -24,10 +23,10 @@ namespace MagazynWina.Domain.Model
             Id = beerId;
             Name = nameBeer;
             Blg = blg;
-            yearProduction = year;
+            YearProduction = year;
             Quantity = quantity;
-            Yeast = yeast;
-            TypeOfBeer = typeOfBeer;
+            yeast = yeast;
+            typeOfBeer = typeOfBeer;
         }
         public Beer() : this(2,0, "nameTest", 0, 0, 0, "yeast", "PaleAle")
         {

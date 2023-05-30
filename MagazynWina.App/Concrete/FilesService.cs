@@ -52,7 +52,6 @@ namespace MagazynWina.App.Concrete
             var sortListBeer = listBeer.OrderBy(i => i.Id).ThenBy(i => i.TypeOfBeer);
             sw = StreamWriterFile(wine);
             jWriter = new JsonTextWriter(sw);
-            //JsonWriter jWriter = StreamWriterFile(wine);
             serializer.Serialize(jWriter, sortListWine);
             sw.Close();
             sw = StreamWriterFile(beer);

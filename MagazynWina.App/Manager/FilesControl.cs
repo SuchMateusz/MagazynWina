@@ -19,8 +19,6 @@ namespace MagazynWina.App.Manager
         public string output;
         public List<Wine> listWine = new List<Wine>();
         public List<Beer> listBeer = new List<Beer>();
-        //private WineService _wineService = new WineService();
-        //private BeerService _beerService = new BeerService();
         public WineService wineService = new WineService();
         public BeerService beerService = new BeerService();
         public FilesService _listWineService = new FilesService();
