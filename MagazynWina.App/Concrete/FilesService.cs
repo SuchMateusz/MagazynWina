@@ -45,7 +45,6 @@ namespace MagazynWina.App.Concrete
             SavingToFile(listWine, listBeer);
             return listWine.Count;
         }
-
         public string SavingToFile(List<Wine> listWine, List<Beer> listBeer)
         {
             var sortListWine = listWine.OrderBy(i => i.Id).ThenBy(i => i.TypeOfWine);
@@ -64,7 +63,6 @@ namespace MagazynWina.App.Concrete
             string beerString = ClosingFile(beer);
             return wineString + beerString;
         }
-
         public List<Wine> ReadFromFileWine()
         {
             string jsonFromFileWine = ReadFromFile(wine);
@@ -72,7 +70,6 @@ namespace MagazynWina.App.Concrete
             ClosingFile(wine);
             return ObjectsWine;
         }
-
         public List<Beer> ReadFromFileBeer()
         {
             string jsonFromFileBeer = ReadFromFile(beer);
@@ -80,7 +77,6 @@ namespace MagazynWina.App.Concrete
             ClosingFile(beer);
             return ObjectsBeers;
         }
-
         public void ReportSaveFile()
         {
             Console.WriteLine("\r\nwrite a report on the changes made");
@@ -97,7 +93,6 @@ namespace MagazynWina.App.Concrete
             serializer.Serialize(jWriter, report);
             ClosingFile(raport);
         }
-
         public void ReadReportFile()
         { 
             string jsonFromFile = ReadFromFile(raport);
@@ -105,13 +100,11 @@ namespace MagazynWina.App.Concrete
             ClosingFile(raport);
             Console.WriteLine(readReport);
         }
-
         private StreamWriter StreamWriterFile(string Object)
         {
             sw = new StreamWriter($@"D:\Programowanie\Szkoła DotNETa\Tydzień5-Praca z danymi\Objects{Object}File.txt");
             return sw;
         }
-
         private string ReadFromFile(string Object)
         {
             using StreamReader streamReader = new StreamReader($@"D:\Programowanie\Szkoła DotNETa\Tydzień5-Praca z danymi\Objects{Object}File.txt");
@@ -119,13 +112,11 @@ namespace MagazynWina.App.Concrete
             jsonFromFile = streamReader.ReadToEnd();
             return jsonFromFile;
         }
-
         private string ClosingFile(string Object)
         {
             using StreamReader streamReader = new StreamReader($@"D:\Programowanie\Szkoła DotNETa\Tydzień5-Praca z danymi\Objects{Object}File.txt");
             streamReader.Close();
             return streamReader.ToString();
         }
-
     }
 }

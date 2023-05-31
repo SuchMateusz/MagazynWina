@@ -25,7 +25,6 @@ namespace MagazynWina.App.Manager
 
         public void ChosingReportOperations(int operation)
         {
-
             switch (operation)
             {
                 case 1:
@@ -48,20 +47,17 @@ namespace MagazynWina.App.Manager
                     break;
             }
         }
-
         public void SaveToFile()
         {
             listWine = wineService.Wines;
             listBeer = beerService.Beers;
             _listWineService.SavingToFile(listWine, listBeer);
         }
-
         public void ReaderFromFile()
         {
             listWine = _listWineService.ReadFromFileWine();
             listBeer = _listWineService.ReadFromFileBeer();
         }
-
         public void AddingTestList()
         {
             _listWineService.AddingFirstTestList();

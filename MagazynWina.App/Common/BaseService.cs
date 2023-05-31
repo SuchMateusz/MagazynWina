@@ -12,10 +12,6 @@ namespace MagazynWina.App.Common
     public class BaseService<T> : IService<T> where T : BaseModel
     {
         public List<T> Objects { get ; set ; }
-        
-        Wine _wine = new Wine();
-        Beer _beer = new Beer();
-
         public BaseService()
         {
             Objects = new List<T>();
@@ -36,11 +32,9 @@ namespace MagazynWina.App.Common
         public int UpdateObject(T obj)
         {
             GetAllObjects();
-
             Objects[obj.Id].Id = obj.Id;
             Objects[obj.Id].Blg = obj.Blg;
             Objects[obj.Id].Quantity = obj.Quantity;
-
             Console.WriteLine($"\nObject updated: {Objects[obj.Id]}");
             return obj.Id;
         }

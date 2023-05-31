@@ -11,12 +11,13 @@ namespace MagazynWina.Tests
 {
     public class BeerServiceTest
     {
+        Beer beer = new Beer(2, 0, "nameTest", 0, 0, 0, "yeast", "PaleAle");
         //Beer(int typeBeerId, int beerId, string nameBeer, int blg, int year, int quantity, string yeast, string typeOfBeer)
+
         [Fact]
         public void AddNewBeer_ProvidingAddNewBeerComplete_AddingNewBeer()
         {
             //Arrange
-            Beer beer = new Beer();
             var mockBeer = new Mock<BeerService>();
             var manager = new BeerService();
             //Act
@@ -24,12 +25,10 @@ namespace MagazynWina.Tests
             //Assert
             Assert.Equal(beer.Id, returnedBeerId.Id);
         }
-
         [Fact]
         public void AddNewBeer_ProvidingAddNewBeerNotCompleted_ErrorAddingNewBeer()
         {
             //Arrange
-            Beer beer = new Beer();
             var mockBeer = new Mock<BeerService>();
             var manager = new BeerService();
             //Act
@@ -42,7 +41,6 @@ namespace MagazynWina.Tests
         public void TestBeerRemoveById_ProvidingRemoveByIdCompleted_TestBeerRemoveByID()
         {
             //Arrange
-            Beer beer = new Beer();
             var mockBeer = new Mock<BeerService>();
             var manager = new BeerService();
             //Act
@@ -57,7 +55,6 @@ namespace MagazynWina.Tests
         public void TestBeerRemoveById_ProvidingRemoveBeerByIdNotCompleted_TestBeerRemoveByIDNotCompleted()
         {
             //Arrange
-            Beer beer = new Beer();
             Beer beer2 = new Beer(2, 1, "nameTest3", 1, 50, 2021, "yeast", "PaleAle");
             var mockBeer = new Mock<BeerService>();
             var manager = new BeerService();
@@ -74,7 +71,6 @@ namespace MagazynWina.Tests
         public void TestBeerDetailById_ProviddingBeerShowsDetails_ShowingBeerDetails()
         {
             //Arrange
-            Beer beer = new Beer();
             var mockBeer = new Mock<BeerService>();
             var manager = new BeerService();
             //Act
@@ -88,7 +84,6 @@ namespace MagazynWina.Tests
         public void TestBeeretailById_ProviddingBeerDontShowsDetails_DontShowingBeerDetails()
         {
             //Arrange
-            Beer beer = new Beer();
             var mockBeer = new Mock<BeerService>();
             var manager = new BeerService();
             //Act
@@ -101,7 +96,6 @@ namespace MagazynWina.Tests
         public void TestUpdatesOBeerDetailsById_ProviddingUpdatesBeerDetails_UpdatesBeerDetails()
         {
             //Arrange
-            Beer beer = new Beer();
             var mockBeer = new Mock<BeerService>();
             var manager = new BeerService();
             //Act
@@ -114,12 +108,10 @@ namespace MagazynWina.Tests
             returnedBeer.Quantity.Should().Be(10);
             returnedBeer.Blg.Should().Be(5);
         }
-
         [Fact]
         public void TestUpdatesBeerDetailsById_ProviddingNotUpdatesBeerDetails_NotUpdatesBeerDetails()
         {
             //Arrange
-            Beer beer = new Beer();
             var mockBeer = new Mock<BeerService>();
             var manager = new BeerService();
             //Act
@@ -130,12 +122,10 @@ namespace MagazynWina.Tests
             //Assert
             returnedBeer.Should().BeNull();
         }
-
         [Fact]
         public void TestGetBeerById_ProviddingGetBeerDetailsById_DetailsBeerById()
         {
             //Arrange
-            Beer beer = new Beer();
             var mockBeer = new Mock<BeerService>();
             var manager = new BeerService();
             //Act
@@ -146,7 +136,6 @@ namespace MagazynWina.Tests
             beerTest.Quantity.Should().Be(beer.Quantity);
             beerTest.Blg.Should().Be(beer.Blg);
         }
-
         [Fact]
         public void TestGetBeerById_ProviddingNotGetBeerDetailsById_DetailsBeerByIdIsntShowed()
         {
@@ -158,9 +147,6 @@ namespace MagazynWina.Tests
             //Assert
             beerTest.Should().BeNull();
         }
-
-
-
         [Fact]
         public void TestGetAllBeersObject_ProviddingGetAllBeersObjects_GetAllBeersObjects()
         {
@@ -176,7 +162,6 @@ namespace MagazynWina.Tests
             //Assert
             id.Should().BeGreaterThan(0);
         }
-
         [Fact]
         public void TestGetNotAllBeersObject_ProviddingGetNoOneBeerObjects_GetNoOneBeerObjects()
         {

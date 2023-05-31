@@ -26,17 +26,15 @@ namespace MagazynWina.App.Manager
             _wineService = wineService;
             _beerService = beerService;
         }
-
         public void AddNewObject()
         {
-
             var addNewObjectMenu = _actionService.GetMenuActionsByMenuName("AddNewObjectMenu");
             Console.WriteLine("\nTell me witch object you prefer too add: ");
-
             for (int i = 0; i < addNewObjectMenu.Count; i++)
             {
                 Console.WriteLine($"{addNewObjectMenu[i].ID}. {addNewObjectMenu[i].Name}");
             }
+
             var operation = Console.ReadKey();
             int typeOfObject;
             Int32.TryParse(operation.KeyChar.ToString(), out typeOfObject);
@@ -52,9 +50,6 @@ namespace MagazynWina.App.Manager
                 var WineType = Console.ReadKey();
                 int chosenWineType;
                 Int32.TryParse(operation.KeyChar.ToString(), out chosenWineType);
-
-
-
                 Console.WriteLine("\nEnter id for new wine: ");
                 var id = Console.ReadLine();
                 int wineId;
@@ -103,12 +98,12 @@ namespace MagazynWina.App.Manager
                 Console.WriteLine("Remember to save changes to file");
                 Console.Clear();
             }
+
             else
             {
                 Console.WriteLine("You wrote wrong type object ID");
             }
         }
-
         public void DeleteObject()
         {
             int productTypeID = ChoiseObjectTypeId();
@@ -137,13 +132,11 @@ namespace MagazynWina.App.Manager
             }
             Console.WriteLine("Remember to save changes to file");
         }
-
         public void GetAllObjects()
         {
             _wineService.GetAllWineObjects();
             _beerService.GetAllBeerObjects();
         }
-
         public void ObjectDetail()
         {
             int productTypeID = ChoiseObjectTypeId();
@@ -168,7 +161,6 @@ namespace MagazynWina.App.Manager
                 Console.WriteLine("You wrote wrong type object ID");
             }
         }
-
         public void UpdateObject()
         {
             int productTypeID = ChoiseObjectTypeId();
@@ -177,34 +169,24 @@ namespace MagazynWina.App.Manager
                 Console.WriteLine("\nWrite me witch Object you want to update: ");
                 int productId;
                 Int32.TryParse(Console.ReadLine(), out productId);
-
-                Wine wine = Objects.FirstOrDefault(p => p.Id == productId);
-                if (wine != null)
-                {
-
-                    Console.WriteLine("\nWrite me updated wine ID: ");
-                    int updatedWineId;
-                    Int32.TryParse(Console.ReadLine(), out updatedWineId);
-                    Console.WriteLine("Write updated name for this wine: ");
-                    string updatedWameWine = Console.ReadLine();
-                    Console.WriteLine("Write me new value of BLG: ");
-                    int updatedWineBlg;
-                    Int32.TryParse(Console.ReadLine(), out updatedWineBlg);
-                    Console.WriteLine("Write me how much wine are in your storage: ");
-                    int updatedWineQuantity;
-                    Int32.TryParse(Console.ReadLine(), out updatedWineQuantity);
-
-                    Objects[productId - 1].Id = updatedWineId;
-                    Objects[productId - 1].Blg = updatedWineBlg;
-                    Objects[productId - 1].Quantity = updatedWineQuantity;
-                    _wineService.UpdateWine(productId, updatedWineId, updatedWineBlg, updatedWineQuantity);
-                    _wine.CheckValueWine(Objects[productId - 1].Quantity);
-                }
-                else
-                {
-
-                }
+                Console.WriteLine("\nWrite me updated wine ID: ");
+                int updatedWineId;
+                Int32.TryParse(Console.ReadLine(), out updatedWineId);
+                Console.WriteLine("Write updated name for this wine: ");
+                string updatedWameWine = Console.ReadLine();
+                Console.WriteLine("Write me new value of BLG: ");
+                int updatedWineBlg;
+                Int32.TryParse(Console.ReadLine(), out updatedWineBlg);
+                Console.WriteLine("Write me how much wine are in your storage: ");
+                int updatedWineQuantity;
+                Int32.TryParse(Console.ReadLine(), out updatedWineQuantity);
+                //Objects[productId - 1].Id = updatedWineId;
+                //Objects[productId - 1].Blg = updatedWineBlg;
+                //Objects[productId - 1].Quantity = updatedWineQuantity;
+                _wineService.UpdateWine(productId, updatedWineId, updatedWineBlg, updatedWineQuantity);
+                _wine.CheckWineAmount(Objects[productId - 1].Quantity);
             }
+
             if (productTypeID == 2)
             {
                 _beerService.GetAllBeerObjects();
@@ -224,6 +206,7 @@ namespace MagazynWina.App.Manager
                 Int32.TryParse(Console.ReadLine(), out updatedBeerQuantity);
                 _beerService.UpdateBeer(productId, updatedBeerId, updatedBeerBlg, updatedBeerQuantity);
             }
+
             else
             {
                 Console.WriteLine("You wrote wrong type object ID");
@@ -232,7 +215,6 @@ namespace MagazynWina.App.Manager
             Console.WriteLine("Remember to save changes to file");
 
         }
-
         public void SugarAdd()
         {
             int addedSugar;
@@ -250,7 +232,6 @@ namespace MagazynWina.App.Manager
             neededSugar = _wineService.SuggarForNewWine( addedSugar, litersOfWine, power);
             Console.WriteLine($"You need: {neededSugar} [grams] to get {litersOfWine} liters wine with {power}%");
         }
-
         public int ChoiseObjectTypeId()
         {
             Console.WriteLine("\nEnter type object Id you want to chose: ");
@@ -271,31 +252,26 @@ namespace MagazynWina.App.Manager
             Console.Clear();
             return productTypeID;
         }
-
         public Wine GetWineDetailsById(int id)
         {
             var wine = _wineService.GetWineDetailsById(id);
             return wine;
         }
-
         public Beer GetBeerDetailsById(int id)
         {
             var beer = _beerService.GetBeerDetailsById(id);
             return beer;
         }
-
         public int AddNewWine(Wine wine)
         {
             var wineId = _wineService.AddNewObject(wine);
             return wineId;
         }
-
         public int AddNewBeer(Beer beer1)
         {
             var beerId = _beerService.AddNewObject(beer1);
             return beerId;
         }
-
         public void OperationsOnFile()
         {
             var addNewObjectMenu = _actionService.GetMenuActionsByMenuName("AddFileMenu");

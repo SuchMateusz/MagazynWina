@@ -13,8 +13,7 @@ namespace MagazynWina.Domain.Model
         public int TypeOfWine { get; set; }
         public int YearProduction { get; set; }
         public string Yeast { get; set; }
-        protected bool low { get; set; }
-
+        protected bool Low { get; set; }
         public Wine(int typeWineId, int wineId, string nameWine, int typeOfWine, byte blg, int year, ushort quantity, string yeast)
         {
             TypeObjectId = typeWineId;
@@ -26,30 +25,27 @@ namespace MagazynWina.Domain.Model
             Quantity = quantity;
             Yeast = yeast;
         }
-
-        public Wine() : this (1,0,"nameTest",0, 0,0, 0, "yeast")
+        public void CheckWineAmount (int quantity)
         {
-            
-        }
-
-        public void CheckValueWine (int quantityy)
-        {
-            string check = "";
-            if (quantityy <= 10)
+            string check;
+            if (quantity <= 10)
             {
-                low = true;
+                Low = true;
             }
-            else
-                low = false;
 
-            if (low == true)
+            else
+                Low = false;
+
+            if (Low == true)
             {
             check = "Posiadasz już zbyt małą ilość do handlu";
             }   
+
             else
             {
                 check = "Posiadana ilość jest wystarczająca";
             }
+
             Console.WriteLine(check);
         }
     }
