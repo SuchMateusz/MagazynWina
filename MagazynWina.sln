@@ -12,7 +12,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagazynWina.App", "MagazynW
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagazynWina.Domain", "MagazynWina.Domain\MagazynWina.Domain.csproj", "{9FAD88BD-4E17-4219-BB84-A2D82813F801}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagazynWina.Tests", "Warehouse.Test\MagazynWina.Tests.csproj", "{91043BE5-A784-48C5-A0AD-04E22944D6E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagazynWina.Tests", "MagazynWina.Test\MagazynWina.Tests.csproj", "{E7FB7467-4E10-4F35-AA57-7E25C72B3E17}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,10 +32,10 @@ Global
 		{9FAD88BD-4E17-4219-BB84-A2D82813F801}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FAD88BD-4E17-4219-BB84-A2D82813F801}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FAD88BD-4E17-4219-BB84-A2D82813F801}.Release|Any CPU.Build.0 = Release|Any CPU
-		{91043BE5-A784-48C5-A0AD-04E22944D6E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{91043BE5-A784-48C5-A0AD-04E22944D6E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{91043BE5-A784-48C5-A0AD-04E22944D6E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{91043BE5-A784-48C5-A0AD-04E22944D6E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7FB7467-4E10-4F35-AA57-7E25C72B3E17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7FB7467-4E10-4F35-AA57-7E25C72B3E17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7FB7467-4E10-4F35-AA57-7E25C72B3E17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7FB7467-4E10-4F35-AA57-7E25C72B3E17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

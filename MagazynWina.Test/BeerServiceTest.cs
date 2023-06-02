@@ -94,11 +94,9 @@ namespace MagazynWina.Tests
             var manager = new BeerService();
             //Act
             manager.AddNewBeerToList(beer.Id+1, beer.Name, beer.Blg, beer.YearProduction, beer.Quantity, beer.Yeast, beer.TypeOfBeer);
-            int newBeerId = 20;
-            var beerId = manager.UpdateBeer(beer.Id+1, newBeerId, 5, 10);
-            var returnedBeer = manager.GetBeerDetailsById(newBeerId);
+            var beerId = manager.UpdateBeer(beer.Id, 5, 10);
+            var returnedBeer = manager.GetBeerDetailsById(beerId);
             //Assert
-            returnedBeer.Id.Should().Be(20);
             returnedBeer.Quantity.Should().Be(10);
             returnedBeer.Blg.Should().Be(5);
         }
@@ -111,8 +109,8 @@ namespace MagazynWina.Tests
             //Act
             manager.AddNewBeerToList(beer.Id, beer.Name, beer.Blg, beer.YearProduction, beer.Quantity, beer.Yeast, beer.TypeOfBeer);
             int newBeerId = 20;
-            var beerId = manager.UpdateBeer(beer.Id + 1, newBeerId, 5, 10);
-            var returnedBeer = manager.GetBeerDetailsById(newBeerId);
+            var beerId = manager.UpdateBeer(beer.Id, 5, 10);
+            var returnedBeer = manager.GetBeerDetailsById(newBeerId+1);
             //Assert
             returnedBeer.Should().BeNull();
         }

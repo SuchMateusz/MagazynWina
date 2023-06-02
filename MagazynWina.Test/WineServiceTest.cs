@@ -18,7 +18,6 @@ namespace MagazynWina.Tests
         public void AddNewWine_ProvidingAddNewWineComplete_AddingNewWine()
         {
             //Arrange
-            //Wine wine = new Wine();
             var mockWine = new Mock<WineService>();
             var mockBeer = new Mock<BeerService>();
             //var manager = new WineAppControl(new MenuActionService(), mockWine.Object, mockBeer.Object);
@@ -110,11 +109,10 @@ namespace MagazynWina.Tests
             var manager = new WineService();
             //Act
             manager.AddNewWineToList(wine.Id+1, wine.Name, wine.TypeOfWine, (byte)wine.Blg, wine.YearProduction, (ushort)wine.Quantity, wine.Yeast);
-            int newWineId = 20;
-            var wineId = manager.UpdateWine(wine.Id+1, newWineId, 5, 10);
-            var returnedWineId = manager.GetWineDetailsById(newWineId);
+
+            var wineId = manager.UpdateWine(wine.Id,5, 10);
+            var returnedWineId = manager.GetWineDetailsById(wine.Id);
             //Assert
-            returnedWineId.Id.Should().Be(20);
             returnedWineId.Quantity.Should().Be(10);
             returnedWineId.Blg.Should().Be(5);
         }
@@ -127,12 +125,10 @@ namespace MagazynWina.Tests
             //Act
             manager.AddNewWineToList(wine.Id + 1, wine.Name, wine.TypeOfWine, (byte)wine.Blg, wine.YearProduction, (ushort)wine.Quantity, wine.Yeast);
             int newWineId = 20;
-            var wineId = manager.UpdateWine(wine.Id + 1, newWineId, 5, 10);
-            var returnedWineId = manager.GetWineDetailsById(newWineId);
+            var wineId = manager.UpdateWine(wine.Id, 5, 10);
+            var returnedWineId = manager.GetWineDetailsById(wine.Id+1);
             //Assert
-            returnedWineId.Id.Should().Be(20);
-            returnedWineId.Quantity.Should().Be(10);
-            returnedWineId.Blg.Should().Be(5);
+            returnedWineId.Should().BeNull();
         }
         [Fact]
         public void TestGetWineById_ProviddingGetWineDetailsById_DetailsWineById()

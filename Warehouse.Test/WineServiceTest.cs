@@ -26,6 +26,7 @@ namespace MagazynWina.Tests
             //Act
             var returnedWineId2 = manager.AddNewWineToList(wine.Id, wine.Name, wine.TypeOfWine, (byte)wine.Blg, wine.YearProduction, (ushort)wine.Quantity, wine.Yeast);
             //Assert
+
             Assert.Equal(wine.Id, returnedWineId2);
         }
         [Fact]

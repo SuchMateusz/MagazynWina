@@ -37,7 +37,7 @@ namespace MagazynWina.App.Concrete
             {
             }
         }
-        public int UpdateBeer(int productId, int updatedBeerId, int updatedBeerBlg, int updatedBeerQuantity)
+        public int UpdateBeer(int productId,int updatedBeerBlg, int updatedBeerQuantity)
         {
             GetAllBeerObjects();
             Beer beer = Objects.FirstOrDefault(p => p.Id == productId);
@@ -45,9 +45,7 @@ namespace MagazynWina.App.Concrete
             {
                 Beers.Find(x => x.Id == productId).Blg = updatedBeerBlg;
                 Beers.Find(x => x.Id == productId).Quantity = updatedBeerQuantity;
-                //Objects[productId - 1].Id = updatedBeerId;
-                //Objects[productId - 1].Blg = updatedBeerBlg;
-                //Objects[productId - 1].Quantity = updatedBeerQuantity;
+                //Beers[productId - 1].Id = updatedBeerId;
             }
 
             else
@@ -56,7 +54,7 @@ namespace MagazynWina.App.Concrete
             }
 
             Beer beerUpdated = Beers.Find(x => x.Id == productId);
-            Console.WriteLine($"\nWine updated: {beerUpdated.Id}, {beerUpdated.Name}, {beerUpdated.Blg}, {beerUpdated.Quantity}");
+            Console.WriteLine($"\nBeer updated: {beerUpdated.Id}, {beerUpdated.Name}, {beerUpdated.Blg}, {beerUpdated.Quantity}");
             return productId;
         }
         public Beer GetBeerDetailsById(int productID)
@@ -71,7 +69,7 @@ namespace MagazynWina.App.Concrete
             Beers = GetAllObjects();
             foreach (var beer in Beers)
             {
-                Console.WriteLine($"\n {Beers.Count} beer id: {beer.Id} beer name: {beer.Name} beer Blg: {beer.Blg} beer year: {beer.YearProduction} beer bootle: {beer.Quantity} beer yeast {beer.Yeast} beer {beer.TypeOfBeer}");
+                Console.WriteLine($"\nBeer id: {beer.Id} beer name: {beer.Name} beer Blg: {beer.Blg} beer year: {beer.YearProduction} beer bootle: {beer.Quantity} beer yeast {beer.Yeast} beer {beer.TypeOfBeer}");
             }
             return Beers.Count();
         }
