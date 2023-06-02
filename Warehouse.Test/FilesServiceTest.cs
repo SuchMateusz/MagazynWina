@@ -30,10 +30,10 @@ namespace MagazynWina.Tests
         public void SavingToFile_ProvidingTestListSaveToFileIsCompleted_SaveListCompleted()
         {
             //Arrange
-            listWine.Add(new Wine(1, 1, "grape", 1, 15, 2017, 10, "Bayanus"));
-            listWine.Add(new Wine(1, 2, "redGrape", 1, 13, 2018, 35, "Bayanus"));
-            listBeer.Add(new Beer(2, 1, "FirstBeer", 2, 2020, 30, "yeast", "Pale Ale"));
-            listBeer.Add(new Beer(2, 2, "Second Beer", 5, 2020, 20, "yeast", "Special Biter"));
+            listWine.Add(new Wine(1, "grape", 1, 15, 2017, 10, "Bayanus"));
+            listWine.Add(new Wine(2, "redGrape", 1, 13, 2018, 35, "Bayanus"));
+            listBeer.Add(new Beer(1, "FirstBeer", 2, 2020, 30, "yeast", "Pale Ale"));
+            listBeer.Add(new Beer(2, "Second Beer", 5, 2020, 20, "yeast", "Special Biter"));
             var mock = new Mock<FilesService>();
             var manager = new FilesService();
             //Act
