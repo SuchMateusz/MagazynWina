@@ -12,7 +12,7 @@ namespace MagazynWina.Tests
 {
     public class WineServiceTest
     {
-        Wine wine = new Wine(1, 0, "nameTest", 0, 0, 0, 0, "yeast");
+        Wine wine = new Wine(0, "nameTest", 0, 0, 0, 0, "yeast");
 
         [Fact]
         public void AddNewWine_ProvidingAddNewWineComplete_AddingNewWine()
@@ -32,7 +32,7 @@ namespace MagazynWina.Tests
         public void AddNewWine_ProvidingAddNewWineNotCompleted_ErrorAddingNewWine()
         {
             //Arrange
-            Wine wine = new Wine(2, 2, "nameTest", 0, 20, 0, 0, "yeast");
+            Wine wine = new Wine(2, "nameTest", 0, 20, 0, 0, "yeast");
             var mockWine = new Mock<WineService>();
             var mockBeer = new Mock<BeerService>();
             var manager = new WineService();
@@ -138,7 +138,7 @@ namespace MagazynWina.Tests
         public void TestGetWineById_ProviddingGetWineDetailsById_DetailsWineById()
         {
             //Arrange
-            Wine wine = new Wine(1, 1, "grape", 1, 15, 2017, 10, "Bayanus");
+            Wine wine = new Wine(1, "grape", 1, 15, 2017, 10, "Bayanus");
             var mockWine = new Mock<WineService>();
             var manager = new WineService();
             //Act
@@ -164,8 +164,8 @@ namespace MagazynWina.Tests
         public void TestGetAllWineObject_ProviddingGetAllWineObjects_GetAllWineObjects()
         {
             //Arrange
-            Wine wineTest1 = new Wine(1, 1, "grape", 1, 15, 2017, 10, "Bayanus");
-            Wine wineTest2 = new Wine(1, 2, "apple", 2, 10, 2017, 23, "Tokay");
+            Wine wineTest1 = new Wine(1, "grape", 1, 15, 2017, 10, "Bayanus");
+            Wine wineTest2 = new Wine(2, "apple", 2, 10, 2017, 23, "Tokay");
             var mock = new Mock<WineService>();
             var manager = new WineService();
             //Act
@@ -179,8 +179,8 @@ namespace MagazynWina.Tests
         public void TestGetNotAllWineObject_ProviddingGetNoOneWineObjects_GetNoOneWineObjects()
         {
             //Arrange
-            Wine wineTest1 = new Wine(1, 1, "grape", 1, 15, 2017, 10, "Bayanus");
-            Wine wineTest2 = new Wine(1, 2, "apple", 2, 10, 2017, 23, "Tokay");
+            Wine wineTest1 = new Wine(1, "grape", 1, 15, 2017, 10, "Bayanus");
+            Wine wineTest2 = new Wine(2, "apple", 2, 10, 2017, 23, "Tokay");
             var mock = new Mock<WineService>();
             var manager = new WineService();
             //Act

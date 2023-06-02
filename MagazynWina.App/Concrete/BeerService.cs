@@ -15,7 +15,7 @@ namespace MagazynWina.App.Concrete
         public List<Beer> Beers = new List<Beer>();
         public Beer AddNewBeerToList(int beerId, string nameBeer, int Blg, int year, int quantity, string yeast, string typeOfBeer)
         {
-            Beer beer = new Beer(2, beerId, nameBeer, Blg, year, quantity, yeast, typeOfBeer);
+            Beer beer = new Beer(beerId, nameBeer, Blg, year, quantity, yeast, typeOfBeer);
             AddNewObject(beer);
             return beer;
         }

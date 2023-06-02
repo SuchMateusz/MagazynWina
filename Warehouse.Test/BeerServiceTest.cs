@@ -11,7 +11,7 @@ namespace MagazynWina.Tests
 {
     public class BeerServiceTest
     {
-        Beer beer = new Beer(2, 0, "nameTest", 0, 0, 0, "yeast", "PaleAle");
+        Beer beer = new Beer(0, "nameTest", 0, 0, 0, "yeast", "PaleAle");
 
         [Fact]
         public void AddNewBeer_ProvidingAddNewBeerComplete_AddingNewBeer()
@@ -52,7 +52,7 @@ namespace MagazynWina.Tests
         public void TestBeerRemoveById_ProvidingRemoveBeerByIdNotCompleted_TestBeerRemoveByIDNotCompleted()
         {
             //Arrange
-            Beer beer2 = new Beer(2, 1, "nameTest3", 1, 50, 2021, "yeast", "PaleAle");
+            Beer beer2 = new Beer(1, "nameTest3", 1, 50, 2021, "yeast", "PaleAle");
             var mockBeer = new Mock<BeerService>();
             var manager = new BeerService();
             //Act
@@ -145,8 +145,8 @@ namespace MagazynWina.Tests
         public void TestGetAllBeersObject_ProviddingGetAllBeersObjects_GetAllBeersObjects()
         {
             //Arrange
-            Beer beerTest1 = new Beer(2, 1, "nameTest1", 3, 20, 2020, "yeast", "PaleAle");
-            Beer beerTest2 = new Beer(2, 3, "nameTest3", 1, 50, 2021, "yeast", "PaleAle");
+            Beer beerTest1 = new Beer(1, "nameTest1", 3, 20, 2020, "yeast", "PaleAle");
+            Beer beerTest2 = new Beer(3, "nameTest3", 1, 50, 2021, "yeast", "PaleAle");
             var mockBeer = new Mock<BeerService>();
             var manager = new BeerService();
             //Act
@@ -160,8 +160,8 @@ namespace MagazynWina.Tests
         public void TestGetNotAllBeersObject_ProviddingGetNoOneBeerObjects_GetNoOneBeerObjects()
         {
             //Arrange
-            Beer beerTest1 = new Beer(2, 1, "nameTest1", 3, 20, 2020, "yeast", "PaleAle");
-            Beer beerTest2 = new Beer(2, 3, "nameTest3", 1, 50, 2021, "yeast", "PaleAle");
+            Beer beerTest1 = new Beer(1, "nameTest1", 3, 20, 2020, "yeast", "PaleAle");
+            Beer beerTest2 = new Beer(3, "nameTest2", 1, 50, 2021, "yeast", "PaleAle");
             var mockBeer = new Mock<BeerService>();
             var manager = new BeerService();
             //Act

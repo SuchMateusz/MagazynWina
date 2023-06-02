@@ -14,9 +14,8 @@ namespace MagazynWina.Domain.Model
         public int YearProduction { get; set; }
         public string Yeast { get; set; }
         protected bool Low { get; set; }
-        public Wine(int typeWineId, int wineId, string nameWine, int typeOfWine, byte blg, int year, ushort quantity, string yeast)
+        public Wine(int wineId, string nameWine, int typeOfWine, byte blg, int year, ushort quantity, string yeast)
         {
-            TypeObjectId = typeWineId;
             Id = wineId;
             Name = nameWine;
             TypeOfWine = typeOfWine;

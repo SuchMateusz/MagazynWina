@@ -30,18 +30,18 @@ namespace MagazynWina.App.Concrete
 
         public int AddingFirstTestList()
         {
-            listWine.Add(new Wine(1, 1, "grape", 1, 15, 2017, 10, "Bayanus"));
-            listWine.Add(new Wine(1, 2, "redGrape", 1, 13, 2018, 35, "Bayanus"));
-            listWine.Add(new Wine(1, 3, "mixGrape", 2, 5, 2019, 25, "Bayanus"));
-            listWine.Add(new Wine(1, 4, "chokeberry", 3, 1, 2020, 30, "Bayanus"));
-            listWine.Add(new Wine(1, 5, "Apple", 2, 7, 2019, 20, "Bayanus"));
-            listWine.Add(new Wine(1, 8, "AppleRaspberry", 1, 10, 2019, 20, "Bayanus"));
-            listWine.Add(new Wine(1, 7, "mixGrape", 3, 2, 2020, 35, "Bayanus"));
-            listWine.Add(new Wine(1, 6, "redCurant", 1, 10, 2021, 40, "Bayanus"));
-            listBeer.Add(new Beer(2, 1, "FirstBeer", 2, 2020, 30, "yeast", "Pale Ale"));
-            listBeer.Add(new Beer(2, 2, "Second Beer", 5, 2020, 20, "yeast", "Special Biter"));
-            listBeer.Add(new Beer(2, 3, "The best Beer", 0, 2021, 40, "yeast", "Austarial Pale Ale"));
-            listBeer.Add(new Beer(2, 4, "Good Beer", 3, 2021, 50, "yeast", "Ale"));
+            listWine.Add(new Wine(1, "grape", 1, 15, 2017, 10, "Bayanus"));
+            listWine.Add(new Wine(2, "redGrape", 1, 13, 2018, 35, "Bayanus"));
+            listWine.Add(new Wine(3, "mixGrape", 2, 5, 2019, 25, "Bayanus"));
+            listWine.Add(new Wine(4, "chokeberry", 3, 1, 2020, 30, "Bayanus"));
+            listWine.Add(new Wine(5, "Apple", 2, 7, 2019, 20, "Bayanus"));
+            listWine.Add(new Wine(8, "AppleRaspberry", 1, 10, 2019, 20, "Bayanus"));
+            listWine.Add(new Wine(7, "mixGrape", 3, 2, 2020, 35, "Bayanus"));
+            listWine.Add(new Wine(6, "redCurant", 1, 10, 2021, 40, "Bayanus"));
+            listBeer.Add(new Beer(1, "FirstBeer", 2, 2020, 30, "yeast", "Pale Ale"));
+            listBeer.Add(new Beer(2, "Second Beer", 5, 2020, 20, "yeast", "Special Biter"));
+            listBeer.Add(new Beer(3, "The best Beer", 0, 2021, 40, "yeast", "Austarial Pale Ale"));
+            listBeer.Add(new Beer(4, "Good Beer", 3, 2021, 50, "yeast", "Ale"));
             SavingToFile(listWine, listBeer);
             return listWine.Count;
         }

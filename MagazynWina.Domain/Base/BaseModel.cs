@@ -10,7 +10,6 @@ namespace MagazynWina.Domain.Base
 {
     public class BaseModel : AuditableModel
     {
-        public int TypeObjectId { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
         public int Blg { get; set; }

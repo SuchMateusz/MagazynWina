@@ -17,7 +17,7 @@ namespace MagazynWina.App.Concrete
 
         public int AddNewWineToList(int wineId, string nameWine, int typeOfWine, byte Blg, int year, ushort quantity, string yeast)
         {
-            Wine wine = new Wine(1, wineId, nameWine, typeOfWine, Blg, year, quantity, yeast);
+            Wine wine = new Wine(wineId, nameWine, typeOfWine, Blg, year, quantity, yeast);
             AddNewObject(wine);
             return wineId;
         }
