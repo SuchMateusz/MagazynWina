@@ -24,17 +24,23 @@ namespace MagazynWina.App.Concrete
         public void DeleteWineFromList(int wineID)
         {
             GetAllWineObjects();
-            var deletedWine = Wines[wineID-1];
+            var deletedWine = Wines[wineID];
             DeleteObject(deletedWine);
             Console.WriteLine("List of wine after deleted selected wine: \n");
             GetAllWineObjects();
             Wines.OrderBy(i => i.Id);
-            for (int i = wineID - 1; i < Wines.Count; i++)
+            if (wineID > 0)
             {
-                Wines.Find(x => x.Id == wineID).Id = Wines.Find(x => x.Id == wineID).Id - 1;
+                for (int i = wineID - 1; i < Wines.Count; i++)
+                {
+                    Wines.Find(x => x.Id == wineID).Id = Wines.Find(x => x.Id == wineID).Id - 1;
+                }
+            }
+            else
+            {
             }
         }
-        public int UpdateWine(int productId, int updatedWineId, int updatedWineBlg, int updatedWineQuantity)
+        public int UpdateWine(int productId, int updatedWineBlg, int updatedWineQuantity)
         {
             GetAllWineObjects();
             Wine wine = Wines.FirstOrDefault(p => p.Id == productId);

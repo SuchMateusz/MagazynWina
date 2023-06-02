@@ -22,13 +22,19 @@ namespace MagazynWina.App.Concrete
         public void DeleteBeerFromList(int beerId)
         {
             GetAllBeerObjects();
-            var deletedBeer = Objects[beerId-1];
+            var deletedBeer = Objects[beerId];
             DeleteObject(deletedBeer);
             GetAllBeerObjects();
             Beers.OrderBy(i => i.Id);
-            for (int i = beerId - 1; i < Beers.Count; i++)
+            if(beerId>0)
             {
-                Beers[i].Id = Beers[i].Id - 1;
+                for (int i = beerId - 1; i < Beers.Count; i++)
+                {
+                    Beers[i].Id = Beers[i].Id - 1;
+                }
+            }
+            else
+            {
             }
         }
         public int UpdateBeer(int productId, int updatedBeerId, int updatedBeerBlg, int updatedBeerQuantity)

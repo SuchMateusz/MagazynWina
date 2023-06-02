@@ -42,7 +42,6 @@ namespace MagazynWina.App.Manager
                 case 5:
                     AddingTestList();
                     break;
-
                 default:
                     break;
             }

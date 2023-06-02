@@ -169,9 +169,6 @@ namespace MagazynWina.App.Manager
                 Console.WriteLine("\nWrite me witch Object you want to update: ");
                 int productId;
                 Int32.TryParse(Console.ReadLine(), out productId);
-                Console.WriteLine("\nWrite me updated wine ID: ");
-                int updatedWineId;
-                Int32.TryParse(Console.ReadLine(), out updatedWineId);
                 Console.WriteLine("Write updated name for this wine: ");
                 string updatedWameWine = Console.ReadLine();
                 Console.WriteLine("Write me new value of BLG: ");
@@ -183,7 +180,7 @@ namespace MagazynWina.App.Manager
                 //Objects[productId - 1].Id = updatedWineId;
                 //Objects[productId - 1].Blg = updatedWineBlg;
                 //Objects[productId - 1].Quantity = updatedWineQuantity;
-                _wineService.UpdateWine(productId, updatedWineId, updatedWineBlg, updatedWineQuantity);
+                _wineService.UpdateWine(productId, updatedWineBlg, updatedWineQuantity);
                 _wine.CheckWineAmount(Objects[productId - 1].Quantity);
             }
 
