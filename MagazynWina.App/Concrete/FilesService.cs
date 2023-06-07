@@ -84,7 +84,6 @@ namespace MagazynWina.App.Concrete
             sw = StreamWriterFile(raport);
             jWriter = new JsonTextWriter(sw);
             serializer.Serialize(jWriter, report);
-
             Console.WriteLine("Write what you want");
             report = Console.ReadLine();
             serializer.Serialize(jWriter, report);

@@ -36,9 +36,6 @@ namespace MagazynWina.App.Concrete
                     Wines.Find(x => x.Id == wineID).Id = Wines.Find(x => x.Id == wineID).Id - 1;
                 }
             }
-            else
-            {
-            }
         }
         public int UpdateWine(int productId, int updatedWineBlg, int updatedWineQuantity)
         {

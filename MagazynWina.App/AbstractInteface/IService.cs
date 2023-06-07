@@ -15,6 +15,5 @@ namespace MagazynWina.App.AbstractInteface
         int UpdateObject(T obj);
         void DeleteObject(T obj);
         T ObjectDetail(int Id);
-        //T UpdateWineTestID(T obj);
     }
 }

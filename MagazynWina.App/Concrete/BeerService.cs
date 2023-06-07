@@ -33,9 +33,6 @@ namespace MagazynWina.App.Concrete
                     Beers[i].Id = Beers[i].Id - 1;
                 }
             }
-            else
-            {
-            }
         }
         public int UpdateBeer(int productId,int updatedBeerBlg, int updatedBeerQuantity)
         {
