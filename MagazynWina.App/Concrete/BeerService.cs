@@ -60,8 +60,6 @@ namespace MagazynWina.App.Concrete
         public Beer GetBeerDetailsById(int productID)
         {
             var beer = ObjectDetail(productID);
-            Console.WriteLine("");
-            //Console.WriteLine($"\nbeer id: {beer.Id} beer name: {beer.Name} beer Blg: {beer.Blg} beer year: {beer.YearProduction} beer bootle: {beer.Quantity} beer yeast {beer.Yeast} beer {beer.TypeOfBeer}");
             return beer;
         }
         public int GetAllBeerObjects()

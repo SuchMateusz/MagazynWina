@@ -109,7 +109,6 @@ namespace MagazynWina.Tests
             var manager = new WineService();
             //Act
             manager.AddNewWineToList(wine.Id+1, wine.Name, wine.TypeOfWine, (byte)wine.Blg, wine.YearProduction, (ushort)wine.Quantity, wine.Yeast);
-
             var wineId = manager.UpdateWine(wine.Id,5, 10);
             var returnedWineId = manager.GetWineDetailsById(wine.Id);
             //Assert

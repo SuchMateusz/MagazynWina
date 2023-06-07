@@ -146,7 +146,8 @@ namespace MagazynWina.App.Manager
                 var wineId = Console.ReadLine();
                 int productID;
                 Int32.TryParse(wineId, out productID);
-                _wineService.GetWineDetailsById(productID);
+                var wine = _wineService.GetWineDetailsById(productID);
+                Console.WriteLine($"\n wine id: {wine.Id} wine name: {wine.Name} wine type: {wine.TypeOfWine} wine Blg: {wine.Blg} wine year: {wine.YearProduction} wine bootle: {wine.Quantity} wine yeast: {wine.Yeast}");
             }
             if (productTypeID == 2)
             {
@@ -154,7 +155,8 @@ namespace MagazynWina.App.Manager
                 var beerId = Console.ReadLine();
                 int productID;
                 Int32.TryParse(beerId, out productID);
-                _beerService.GetBeerDetailsById(productID);
+                var beer = _beerService.GetBeerDetailsById(productID);
+                Console.WriteLine($"\nbeer id: {beer.Id} beer name: {beer.Name} beer Blg: {beer.Blg} beer year: {beer.YearProduction} beer bootle: {beer.Quantity} beer yeast {beer.Yeast} beer {beer.TypeOfBeer}");
             }
             else
             {
@@ -201,7 +203,7 @@ namespace MagazynWina.App.Manager
                 Console.WriteLine("Write me how much wine are in your storage: ");
                 int updatedBeerQuantity;
                 Int32.TryParse(Console.ReadLine(), out updatedBeerQuantity);
-                _beerService.UpdateBeer(productId, updatedBeerId, updatedBeerBlg, updatedBeerQuantity);
+                _beerService.UpdateBeer(productId, updatedBeerBlg, updatedBeerQuantity);
             }
 
             else
