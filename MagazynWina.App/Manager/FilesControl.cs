@@ -48,8 +48,8 @@ namespace MagazynWina.App.Manager
         }
         public void SaveToFile()
         {
-            listWine = wineService.Wines;
-            listBeer = beerService.Beers;
+            listWine = wineService.Objects;
+            listBeer = beerService.Objects;
             _listWineService.SavingToFile(listWine, listBeer);
         }
         public void ReaderFromFile()

@@ -11,24 +11,29 @@ namespace MagazynWina.App.Common
 {
     public class BaseService<T> : IService<T> where T : BaseModel
     {
-        public List<T> Objects { get ; set ; }
+        public List<T> Objects { get; set; }
+
         public BaseService()
         {
             Objects = new List<T>();
         }
+
         public int AddNewObject(T obj)
         {
             Objects.Add(obj);
             return obj.Id;
         }
+
         public void DeleteObject(T obj)
         {
             Objects.Remove(obj);
         }
+
         public List<T> GetAllObjects()
         {
             return Objects;
         }
+
         public int UpdateObject(T obj)
         {
             GetAllObjects();
@@ -38,10 +43,22 @@ namespace MagazynWina.App.Common
             Console.WriteLine($"\nObject updated: {Objects[obj.Id]}");
             return obj.Id;
         }
+
         public T ObjectDetail(int id)
         {
             var objectDetails = Objects.FirstOrDefault(p => p.Id == id);
             return (T)objectDetails;
+        }
+        public bool CheckObjectAmount(int quantity)
+        {
+            bool lowAmount;
+            string check;
+            if (quantity <= 10)
+                lowAmount = true;
+            else
+                lowAmount = false;
+
+            return lowAmount;
         }
     }
 }

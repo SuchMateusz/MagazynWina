@@ -14,11 +14,10 @@ namespace MagazynWina.App.Manager
     public class WineAppControl
     {
         private readonly MenuActionService _actionService;
-        private List<Wine> Objects { get; set; }
+        //private List<Wine> Objects { get; set; }
         WineService _wineService = new WineService();
         BeerService _beerService = new BeerService();
         FilesControl _filesControl = new FilesControl();
-        Wine _wine;
 
         public WineAppControl(MenuActionService actionService, WineService wineService, BeerService beerService)
         {
@@ -29,7 +28,7 @@ namespace MagazynWina.App.Manager
         public void AddNewObject()
         {
             var addNewObjectMenu = _actionService.GetMenuActionsByMenuName("AddNewObjectMenu");
-            Console.WriteLine("\nTell me witch object you prefer too add: ");
+            Console.WriteLine("\nTell me which object you prefer too add: ");
             for (int i = 0; i < addNewObjectMenu.Count; i++)
             {
                 Console.WriteLine($"{addNewObjectMenu[i].ID}. {addNewObjectMenu[i].Name}");
@@ -41,7 +40,7 @@ namespace MagazynWina.App.Manager
             if (typeOfObject == 1)
             {
                 var addNewWineMenu = _actionService.GetMenuActionsByMenuName("AddNewWineMenu");
-                Console.WriteLine("\nTell me witch wine you prefer too add: ");
+                Console.WriteLine("\nTell me which wine you prefer too add: ");
                 for (int i = 0; i < addNewWineMenu.Count; i++)
                 {
                     Console.WriteLine($"{addNewWineMenu[i].ID}. {addNewWineMenu[i].Name}");
@@ -147,7 +146,7 @@ namespace MagazynWina.App.Manager
                 int productID;
                 Int32.TryParse(wineId, out productID);
                 var wine = _wineService.GetWineDetailsById(productID);
-                Console.WriteLine($"\n wine id: {wine.Id} wine name: {wine.Name} wine type: {wine.TypeOfWine} wine Blg: {wine.Blg} wine year: {wine.YearProduction} wine bootle: {wine.Quantity} wine yeast: {wine.Yeast}");
+                Console.WriteLine($"\nWine id: {wine.Id} wine name: {wine.Name} wine type: {wine.TypeOfWine} wine Blg: {wine.Blg} wine year: {wine.YearProduction} wine bootle: {wine.Quantity} wine yeast: {wine.Yeast}");
             }
             else if (productTypeID == 2)
             {
@@ -168,11 +167,11 @@ namespace MagazynWina.App.Manager
             int productTypeID = ChoiseObjectTypeId();
             if (productTypeID == 1)
             {
-                Console.WriteLine("\nWrite me witch Object you want to update: ");
+                Console.WriteLine("\nWrite me which Object you want to update: ");
                 int productId;
                 Int32.TryParse(Console.ReadLine(), out productId);
                 Console.WriteLine("Write updated name for this wine: ");
-                string updatedWameWine = Console.ReadLine();
+                string updatedNameWine = Console.ReadLine();
                 Console.WriteLine("Write me new value of BLG: ");
                 int updatedWineBlg;
                 Int32.TryParse(Console.ReadLine(), out updatedWineBlg);
@@ -182,14 +181,14 @@ namespace MagazynWina.App.Manager
                 //Objects[productId - 1].Id = updatedWineId;
                 //Objects[productId - 1].Blg = updatedWineBlg;
                 //Objects[productId - 1].Quantity = updatedWineQuantity;
-                _wineService.UpdateWine(productId, updatedWineBlg, updatedWineQuantity);
-                _wine.CheckWineAmount(Objects[productId - 1].Quantity);
+                _wineService.UpdateWine(productId, updatedNameWine, updatedWineBlg, updatedWineQuantity);
+
             }
 
             else if (productTypeID == 2)
             {
                 _beerService.GetAllBeerObjects();
-                Console.WriteLine("\nWrite me witch Object you want to update: ");
+                Console.WriteLine("\nWrite me which Object you want to update: ");
                 int productId;
                 Int32.TryParse(Console.ReadLine(), out productId);
                 Console.WriteLine("\nWrite me updated wine ID: ");
@@ -203,7 +202,7 @@ namespace MagazynWina.App.Manager
                 Console.WriteLine("Write me how much wine are in your storage: ");
                 int updatedBeerQuantity;
                 Int32.TryParse(Console.ReadLine(), out updatedBeerQuantity);
-                _beerService.UpdateBeer(productId, updatedBeerBlg, updatedBeerQuantity);
+                _beerService.UpdateBeer(productId, updatedBeerName, updatedBeerBlg, updatedBeerQuantity);
             }
             else
             {
@@ -224,7 +223,7 @@ namespace MagazynWina.App.Manager
             Int32.TryParse(Console.ReadLine(), out addedSugar);
             Console.WriteLine("Tell me how many liters of wine you want to prepare:");
             Int32.TryParse(Console.ReadLine(), out litersOfWine);
-            Console.WriteLine("Tell me what kind of power you want to have:");
+            Console.WriteLine("Tell me how much power percentage you want to get:");
             Int32.TryParse(Console.ReadLine(), out power);
             neededSugar = _wineService.SuggarForNewWine( addedSugar, litersOfWine, power);
             Console.WriteLine($"You need: {neededSugar} [grams] to get {litersOfWine} liters wine with {power}%");

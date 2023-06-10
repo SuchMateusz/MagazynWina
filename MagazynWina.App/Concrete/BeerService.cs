@@ -11,38 +11,42 @@ using System.Threading.Tasks;
 namespace MagazynWina.App.Concrete
 {
     public class BeerService : BaseService<Beer>
-    {
-        public List<Beer> Beers = new List<Beer>();
+    { 
         public Beer AddNewBeerToList(int beerId, string nameBeer, int Blg, int year, int quantity, string yeast, string typeOfBeer)
         {
             Beer beer = new Beer(beerId, nameBeer, Blg, year, quantity, yeast, typeOfBeer);
             AddNewObject(beer);
             return beer;
         }
+
         public void DeleteBeerFromList(int beerId)
         {
             GetAllBeerObjects();
             var deletedBeer = Objects[beerId];
             DeleteObject(deletedBeer);
             GetAllBeerObjects();
-            Beers.OrderBy(i => i.Id);
+            Objects.OrderBy(i => i.Id);
             if(beerId>0)
             {
-                for (int i = beerId - 1; i < Beers.Count; i++)
+                for (int i = beerId - 1; i < Objects.Count; i++)
                 {
-                    Beers[i].Id = Beers[i].Id - 1;
+                    Objects[i].Id = Objects[i].Id - 1;
                 }
             }
         }
-        public int UpdateBeer(int productId,int updatedBeerBlg, int updatedBeerQuantity)
+
+        public int UpdateBeer(int productId,string updatedBeerName, int updatedBeerBlg, int updatedBeerQuantity)
         {
+            bool checkAmount;
+            string check;
             GetAllBeerObjects();
             Beer beer = Objects.FirstOrDefault(p => p.Id == productId);
             if (beer != null)
             {
-                Beers.Find(x => x.Id == productId).Blg = updatedBeerBlg;
-                Beers.Find(x => x.Id == productId).Quantity = updatedBeerQuantity;
-                //Beers[productId - 1].Id = updatedBeerId;
+                beer.Name = updatedBeerName;
+                beer.Blg = updatedBeerBlg;
+                beer.Quantity = updatedBeerQuantity;
+                UpdateObject(beer);
             }
 
             else
@@ -50,23 +54,31 @@ namespace MagazynWina.App.Concrete
                 return productId;
             }
 
-            Beer beerUpdated = Beers.Find(x => x.Id == productId);
-            Console.WriteLine($"\nBeer updated: {beerUpdated.Id}, {beerUpdated.Name}, {beerUpdated.Blg}, {beerUpdated.Quantity}");
+            beer = Objects.FirstOrDefault(p => p.Id == productId);
+            Console.WriteLine($"\nBeer updated: \nId = {beer.Id}, Name = {beer.Name}, Blg = {beer.Blg}, Quantity = {beer.Quantity}");
+            checkAmount = CheckObjectAmount(beer.Quantity);
+            if (checkAmount == true)
+                check = "Posiadasz już zbyt małą ilość do handlu";
+            else
+                check = "Posiadana ilość jest wystarczająca";
+            Console.WriteLine(check);
             return productId;
         }
+
         public Beer GetBeerDetailsById(int productID)
         {
             var beer = ObjectDetail(productID);
             return beer;
         }
+
         public int GetAllBeerObjects()
         {
-            Beers = GetAllObjects();
-            foreach (var beer in Beers)
+            Objects = GetAllObjects();
+            foreach (var beer in Objects)
             {
                 Console.WriteLine($"\nBeer id: {beer.Id} beer name: {beer.Name} beer Blg: {beer.Blg} beer year: {beer.YearProduction} beer bootle: {beer.Quantity} beer yeast {beer.Yeast} beer {beer.TypeOfBeer}");
             }
-            return Beers.Count();
+            return Objects.Count();
         }
     }
 }

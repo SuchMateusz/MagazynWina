@@ -8,7 +8,6 @@ using MagazynWina.Domain.Model;
 using System;
 using System.Windows;
 
-
 namespace MagazynWina
 {
     class Program

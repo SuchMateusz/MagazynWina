@@ -14,6 +14,7 @@ namespace MagazynWina.App.AbstractInteface
         int AddNewObject(T obj);
         int UpdateObject(T obj);
         void DeleteObject(T obj);
-        T ObjectDetail(int Id);
+        T ObjectDetail(int id);
+        public bool CheckObjectAmount(int quantity);
     }
 }
