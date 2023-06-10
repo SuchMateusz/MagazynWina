@@ -56,7 +56,6 @@ namespace MagazynWina.App.Concrete
 
             wine = Objects.FirstOrDefault(p => p.Id == productId);
             Console.WriteLine($"\nWine updated: \nId:{wine.Id}, Name:{wine.Name}, Blg: {wine.Blg}, Quantity: {wine.Quantity}");
-            
             checkAmount = CheckObjectAmount(wine.Quantity);
             if (checkAmount == true)
                 check = "Posiadasz już zbyt małą ilość do handlu";
