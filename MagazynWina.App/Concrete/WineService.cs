@@ -39,7 +39,6 @@ namespace MagazynWina.App.Concrete
 
         public int UpdateWine(int productId, string updatedNameWine, int updatedWineBlg, int updatedWineQuantity)
         {
-
             bool checkAmount;
             string check;
             Wine wine = Objects.FirstOrDefault(p => p.Id == productId);

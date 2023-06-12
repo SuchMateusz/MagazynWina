@@ -13,7 +13,6 @@ namespace MagazynWina.Domain.Model
         public int YearProduction { get; set; }
         public string Yeast { get; set; }
         public string TypeOfBeer { get; set; }
-        protected bool lowAmount { get; set; }
 
         public Beer(int beerId, string nameBeer, int blg, int year, int quantity, string yeast, string typeOfBeer)
         {

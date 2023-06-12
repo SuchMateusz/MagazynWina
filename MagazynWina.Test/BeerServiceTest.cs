@@ -43,7 +43,6 @@ namespace MagazynWina.Tests
             var manager = new BeerService();
             var returnedBeerId = manager.AddNewBeerToList(beer.Id, beer.Name, beer.Blg, beer.YearProduction, beer.Quantity, beer.Yeast, beer.TypeOfBeer);
             //Act
-
             manager.DeleteBeerFromList(beer.Id);
             var returnedBeerId2 = manager.GetBeerDetailsById(beer.Id);
             //Assert
