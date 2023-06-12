@@ -58,9 +58,9 @@ namespace MagazynWina.App.Concrete
             Console.WriteLine($"\nBeer updated: \nId = {beer.Id}, Name = {beer.Name}, Blg = {beer.Blg}, Quantity = {beer.Quantity}");
             checkAmount = CheckObjectAmount(beer.Quantity);
             if (checkAmount == true)
-                check = "Posiadasz już zbyt małą ilość do handlu";
+                check = "You already have too little to sale";
             else
-                check = "Posiadana ilość jest wystarczająca";
+                check = "The amount available is sufficient";
             Console.WriteLine(check);
             return productId;
         }

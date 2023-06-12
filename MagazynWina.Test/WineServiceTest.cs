@@ -109,7 +109,7 @@ namespace MagazynWina.Tests
             var manager = new WineService();
             //Act
             manager.AddNewWineToList(wine.Id+1, wine.Name, wine.TypeOfWine, (byte)wine.Blg, wine.YearProduction, (ushort)wine.Quantity, wine.Yeast);
-            var wineId = manager.UpdateWine(wine.Id,5, 10);
+            var wineId = manager.UpdateWine(wine.Id, wine.Name, 5, 10);
             var returnedWineId = manager.GetWineDetailsById(wine.Id);
             //Assert
             returnedWineId.Quantity.Should().Be(10);
@@ -124,7 +124,7 @@ namespace MagazynWina.Tests
             //Act
             manager.AddNewWineToList(wine.Id + 1, wine.Name, wine.TypeOfWine, (byte)wine.Blg, wine.YearProduction, (ushort)wine.Quantity, wine.Yeast);
             int newWineId = 20;
-            var wineId = manager.UpdateWine(wine.Id, 5, 10);
+            var wineId = manager.UpdateWine(wine.Id, wine.Name, 5, 10);
             var returnedWineId = manager.GetWineDetailsById(wine.Id+1);
             //Assert
             returnedWineId.Should().BeNull();

@@ -12,7 +12,6 @@ namespace MagazynWina
 {
     class Program
     {
-        
         static void Main(string[] args)
         {
             MenuActionService actionService = new MenuActionService();

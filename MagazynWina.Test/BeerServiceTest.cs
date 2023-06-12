@@ -41,8 +41,9 @@ namespace MagazynWina.Tests
             //Arrange
             var mockBeer = new Mock<BeerService>();
             var manager = new BeerService();
-            //Act
             var returnedBeerId = manager.AddNewBeerToList(beer.Id, beer.Name, beer.Blg, beer.YearProduction, beer.Quantity, beer.Yeast, beer.TypeOfBeer);
+            //Act
+
             manager.DeleteBeerFromList(beer.Id);
             var returnedBeerId2 = manager.GetBeerDetailsById(beer.Id);
             //Assert
@@ -94,7 +95,7 @@ namespace MagazynWina.Tests
             var manager = new BeerService();
             //Act
             manager.AddNewBeerToList(beer.Id+1, beer.Name, beer.Blg, beer.YearProduction, beer.Quantity, beer.Yeast, beer.TypeOfBeer);
-            var beerId = manager.UpdateBeer(beer.Id, 5, 10);
+            var beerId = manager.UpdateBeer(beer.Id, beer.Name, 5, 10);
             var returnedBeer = manager.GetBeerDetailsById(beerId);
             //Assert
             returnedBeer.Quantity.Should().Be(10);
@@ -109,7 +110,7 @@ namespace MagazynWina.Tests
             //Act
             manager.AddNewBeerToList(beer.Id, beer.Name, beer.Blg, beer.YearProduction, beer.Quantity, beer.Yeast, beer.TypeOfBeer);
             int newBeerId = 20;
-            var beerId = manager.UpdateBeer(beer.Id, 5, 10);
+            var beerId = manager.UpdateBeer(beer.Id, beer.Name, 5, 10);
             var returnedBeer = manager.GetBeerDetailsById(newBeerId+1);
             //Assert
             returnedBeer.Should().BeNull();

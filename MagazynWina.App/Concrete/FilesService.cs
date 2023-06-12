@@ -72,6 +72,7 @@ namespace MagazynWina.App.Concrete
             ClosingFile(wine);
             return ObjectsWine;
         }
+
         public List<Beer> ReadFromFileBeer()
         {
             string jsonFromFileBeer = ReadFromFile(beer);
@@ -79,6 +80,7 @@ namespace MagazynWina.App.Concrete
             ClosingFile(beer);
             return ObjectsBeers;
         }
+
         public void ReportSaveFile()
         {
             Console.WriteLine("\r\nwrite a report on the changes made");
@@ -94,6 +96,7 @@ namespace MagazynWina.App.Concrete
             serializer.Serialize(jWriter, report);
             ClosingFile(raport);
         }
+
         public void ReadReportFile()
         { 
             string jsonFromFile = ReadFromFile(raport);
@@ -101,6 +104,7 @@ namespace MagazynWina.App.Concrete
             ClosingFile(raport);
             Console.WriteLine(readReport);
         }
+
         private StreamWriter StreamWriterFile(string Object)
         {
             sw = new StreamWriter($@"D:\Programowanie\Szkoła DotNETa\Tydzień5-Praca z danymi\Objects{Object}File.txt");

@@ -36,11 +36,10 @@ namespace MagazynWina.App.Common
 
         public int UpdateObject(T obj)
         {
-            GetAllObjects();
-            Objects[obj.Id].Id = obj.Id;
-            Objects[obj.Id].Blg = obj.Blg;
-            Objects[obj.Id].Quantity = obj.Quantity;
-            Console.WriteLine($"\nObject updated: {Objects[obj.Id]}");
+            Objects[obj.Id-1].Id = obj.Id;
+            Objects[obj.Id-1].Name = obj.Name;
+            Objects[obj.Id-1].Blg = obj.Blg;
+            Objects[obj.Id-1].Quantity = obj.Quantity;
             return obj.Id;
         }
 
@@ -49,6 +48,7 @@ namespace MagazynWina.App.Common
             var objectDetails = Objects.FirstOrDefault(p => p.Id == id);
             return (T)objectDetails;
         }
+
         public bool CheckObjectAmount(int quantity)
         {
             bool lowAmount;

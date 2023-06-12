@@ -18,7 +18,6 @@ namespace MagazynWina.Tests
         public void AddingFirstTestList_ProvidingTestListIsCompletedAdd_TheAdditionListIsCompleted()
         {
             //Arrange
-
             var mock = new Mock<FilesService>();
             var manager = new FilesService();
             //Act

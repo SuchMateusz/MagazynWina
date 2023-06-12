@@ -14,7 +14,6 @@ namespace MagazynWina.App.Manager
     public class WineAppControl
     {
         private readonly MenuActionService _actionService;
-        //private List<Wine> Objects { get; set; }
         WineService _wineService = new WineService();
         BeerService _beerService = new BeerService();
         FilesControl _filesControl = new FilesControl();
@@ -25,6 +24,7 @@ namespace MagazynWina.App.Manager
             _wineService = wineService;
             _beerService = beerService;
         }
+
         public void AddNewObject()
         {
             var addNewObjectMenu = _actionService.GetMenuActionsByMenuName("AddNewObjectMenu");
@@ -131,11 +131,13 @@ namespace MagazynWina.App.Manager
             }
             Console.WriteLine("Remember to save changes to file");
         }
+
         public void GetAllObjects()
         {
             _wineService.GetAllWineObjects();
             _beerService.GetAllBeerObjects();
         }
+
         public void ObjectDetail()
         {
             int productTypeID = ChoiseObjectTypeId();
@@ -162,6 +164,7 @@ namespace MagazynWina.App.Manager
                 Console.WriteLine("You wrote wrong type object ID");
             }
         }
+
         public void UpdateObject()
         {
             int productTypeID = ChoiseObjectTypeId();
@@ -182,7 +185,6 @@ namespace MagazynWina.App.Manager
                 //Objects[productId - 1].Blg = updatedWineBlg;
                 //Objects[productId - 1].Quantity = updatedWineQuantity;
                 _wineService.UpdateWine(productId, updatedNameWine, updatedWineBlg, updatedWineQuantity);
-
             }
 
             else if (productTypeID == 2)
@@ -204,21 +206,21 @@ namespace MagazynWina.App.Manager
                 Int32.TryParse(Console.ReadLine(), out updatedBeerQuantity);
                 _beerService.UpdateBeer(productId, updatedBeerName, updatedBeerBlg, updatedBeerQuantity);
             }
+
             else
             {
                 Console.WriteLine("You wrote wrong type object ID");
             }
 
             Console.WriteLine("Remember to save changes to file");
-
         }
+
         public void SugarAdd()
         {
             int addedSugar;
             int litersOfWine;
             int power;
             int neededSugar;
-
             Console.WriteLine("\nTell me how much sugar (in grams) is there:");
             Int32.TryParse(Console.ReadLine(), out addedSugar);
             Console.WriteLine("Tell me how many liters of wine you want to prepare:");
@@ -228,6 +230,7 @@ namespace MagazynWina.App.Manager
             neededSugar = _wineService.SuggarForNewWine( addedSugar, litersOfWine, power);
             Console.WriteLine($"You need: {neededSugar} [grams] to get {litersOfWine} liters wine with {power}%");
         }
+
         public int ChoiseObjectTypeId()
         {
             Console.WriteLine("\nEnter type object Id you want to chose: ");

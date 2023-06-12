@@ -12,6 +12,7 @@ namespace MagazynWina.App.Concrete
 {
     public class WineService : BaseService<Wine>
     {
+
         public int AddNewWineToList(int wineId, string nameWine, int typeOfWine, byte Blg, int year, ushort quantity, string yeast)
         {
             Wine wine = new Wine(wineId, nameWine, typeOfWine, Blg, year, quantity, yeast);
@@ -36,14 +37,15 @@ namespace MagazynWina.App.Concrete
             }
         }
 
-        public int UpdateWine(int productId,string updatedNameWine, int updatedWineBlg, int updatedWineQuantity)
+        public int UpdateWine(int productId, string updatedNameWine, int updatedWineBlg, int updatedWineQuantity)
         {
+
             bool checkAmount;
             string check;
-            GetAllWineObjects();
             Wine wine = Objects.FirstOrDefault(p => p.Id == productId);
             if (wine != null)
             {
+                wine.Id = productId;
                 wine.Name = updatedNameWine;
                 wine.Blg = updatedWineBlg;
                 wine.Quantity = updatedWineQuantity;
@@ -58,9 +60,9 @@ namespace MagazynWina.App.Concrete
             Console.WriteLine($"\nWine updated: \nId:{wine.Id}, Name:{wine.Name}, Blg: {wine.Blg}, Quantity: {wine.Quantity}");
             checkAmount = CheckObjectAmount(wine.Quantity);
             if (checkAmount == true)
-                check = "Posiadasz już zbyt małą ilość do handlu";
+                check = "You already have too little to sale";
             else
-                check = "Posiadana ilość jest wystarczająca";
+                check = "The amount available is sufficient";
             Console.WriteLine(check);
             return productId;
         }
