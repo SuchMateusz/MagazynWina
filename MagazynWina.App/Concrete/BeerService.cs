@@ -35,7 +35,7 @@ namespace MagazynWina.App.Concrete
             }
         }
 
-        public int UpdateBeer(int productId,string updatedBeerName, int updatedBeerBlg, int updatedBeerQuantity)
+        public int UpdateBeer(int productId, string updatedBeerName, int updatedBeerBlg, int updatedBeerQuantity)
         {
             bool checkAmount;
             string check;
