@@ -181,10 +181,8 @@ namespace MagazynWina.App.Manager
                 Console.WriteLine("Write me how much wine are in your storage: ");
                 int updatedWineQuantity;
                 Int32.TryParse(Console.ReadLine(), out updatedWineQuantity);
-                //Objects[productId - 1].Id = updatedWineId;
-                //Objects[productId - 1].Blg = updatedWineBlg;
-                //Objects[productId - 1].Quantity = updatedWineQuantity;
                 _wineService.UpdateWine(productId, updatedNameWine, updatedWineBlg, updatedWineQuantity);
+
             }
 
             else if (productTypeID == 2)

@@ -25,17 +25,6 @@ namespace MagazynWina.Tests
             Assert.Equal(wine.Id, returnedWineId);
         }
 
-        //[Fact]
-        //public void AddNewWine_ProvidingAddNewWineNotCompleted_ErrorAddingNewWine()
-        //{
-        //    //Arrange
-        //    var service = new WineService();
-        //    //Act
-        //    var returnedWineId = service.AddNewWineToList(wine.Id, wine.Name, wine.TypeOfWine, (byte)wine.Blg, wine.YearProduction, (ushort)wine.Quantity, wine.Yeast);
-        //    //Assert
-        //    Assert.Equal(wine.Id, returnedWineId);
-        //}
-
         [Fact]
         public void TestWineRemoveById_ProvidingRemoveByIdCompleted_TestWineRemoveByID()
         {
@@ -48,23 +37,6 @@ namespace MagazynWina.Tests
             //Assert
             returnedWine.Should().BeNull();
         }
-
-        //[Fact]
-        //public void TestWineRemoveById_ProvidingRemoveByIdNotCompleted_TestWineRemoveByIDNotCompleted()
-        //{
-        //    //Arrange
-        //    var mockWine = new Mock<WineService>();
-        //    var manager2 = new WineService();
-        //    var returnedWineId = manager2.AddNewWineToList(wine.Id, wine.Name, wine.TypeOfWine, (byte)wine.Blg, wine.YearProduction, (ushort)wine.Quantity, wine.Yeast);
-        //    var returnedWineId3 = manager2.AddNewWineToList(wine.Id + 1, wine.Name, wine.TypeOfWine, (byte)wine.Blg, wine.YearProduction, (ushort)wine.Quantity, wine.Yeast);
-        //    var returnedWineId4 = manager2.AddNewWineToList(wine.Id + 2, wine.Name, wine.TypeOfWine, (byte)wine.Blg, wine.YearProduction, (ushort)wine.Quantity, wine.Yeast);
-        //    //Act
-        //    manager2.DeleteWineFromList(wine.Id+1);
-        //    var returnedWineId2 = manager2.GetWineDetailsById(wine.Id);
-        //    //Assert
-        //    Assert.Equal(wine.Id, returnedWineId);
-        //    returnedWineId2.Id.Should().Be(wine.Id);
-        //}
 
         [Fact]
         public void TestObjectDetailById_ProviddingObjectShowsDetails_ShowingObjectDetails()
@@ -79,24 +51,10 @@ namespace MagazynWina.Tests
             wine.Should().BeSameAs(returnedWine);
         }
 
-        //[Fact]
-        //public void TestObjectDetailById_ProviddingObjectDontShowsDetails_DontShowingObjectDetails()
-        //{
-        //    //Arrange
-        //    //Wine wine = new Wine();
-        //    var mockWine = new Mock<WineService>();
-        //    var manager = new WineService();
-        //    //Act
-        //    var returnedWineId = manager.GetWineDetailsById(wine.Id);
-        //    //Assert
-        //    returnedWineId.Should().BeNull();
-        //}
-
         [Fact]
         public void TestUpdatesObjectDetailsById_ProviddingUpdatesObjectDetails_UpdatesObjectDetails()
         {
             //Arrange
-
             var service = new WineService();
             service.AddNewWineToList(wine.Id, wine.Name, wine.TypeOfWine, (byte)wine.Blg, wine.YearProduction, (ushort)wine.Quantity, wine.Yeast);
             //Act
@@ -111,15 +69,14 @@ namespace MagazynWina.Tests
         //public void TestUpdatesObjectDetailsById_ProviddingNotUpdatesObjectDetails_NotUpdatesObjectDetails()
         //{
         //    //Arrange
-        //    var mockWine = new Mock<WineService>();
-        //    var manager = new WineService();
-        //    //Act
-        //    manager.AddNewWineToList(wine.Id + 1, wine.Name, wine.TypeOfWine, (byte)wine.Blg, wine.YearProduction, (ushort)wine.Quantity, wine.Yeast);
+        //    var service = new WineService();
+        //    //service.AddNewWineToList(wine.Id, wine.Name, wine.TypeOfWine, (byte)wine.Blg, wine.YearProduction, (ushort)wine.Quantity, wine.Yeast);
         //    int newWineId = 20;
-        //    var wineId = manager.UpdateWine(wine.Id, wine.Name, 5, 10);
-        //    var returnedWineId = manager.GetWineDetailsById(wine.Id+1);
+        //    //Act
+        //    var wineId = service.UpdateWine(wine.Id, wine.Name, 5, 10);
+        //    var returnedWine = service.GetWineDetailsById(wine.Id);
         //    //Assert
-        //    returnedWineId.Should().BeNull();
+        //    returnedWine.Should().BeNull();
         //}
 
         [Fact]
@@ -165,19 +122,16 @@ namespace MagazynWina.Tests
             id.Should().BeGreaterThan(0);
         }
 
-        //[Fact]
-        //public void TestGetNotAllWineObject_ProviddingGetNoOneWineObjects_GetNoOneWineObjects()
-        //{
-        //    //Arrange
-        //    Wine wineTest1 = new Wine(1, "grape", 1, 15, 2017, 10, "Bayanus");
-        //    Wine wineTest2 = new Wine(2, "apple", 2, 10, 2017, 23, "Tokay");
-        //    var mock = new Mock<WineService>();
-        //    var service = new WineService();
-        //    //Act
-        //    int id = service.GetAllWineObjects();
-        //    //Assert
-        //    id.Should().Be(0);
-        //}
+        [Fact]
+        public void TestGetNotAllWineObject_ProviddingGetNoOneWineObjects_GetNoOneWineObjects()
+        {
+            //Arrange
+            var service = new WineService();
+            //Act
+            int id = service.GetAllWineObjects();
+            //Assert
+            id.Should().Be(0);
+        }
 
         [Fact]
         public void TestGetNumberOfSuggarToAdd_ProviddingGetNumberSuggar_NumberSuggarAddToWine()
@@ -198,8 +152,8 @@ namespace MagazynWina.Tests
         {
             //Arrange
             int addedSugar = 5;
-            int litersOfWine = 0;
-            int power = 10;
+            int litersOfWine = 5;
+            int power = 0;
             var service = new WineService();
             //Act
             int neededSugar = service.SuggarForNewWine(addedSugar, litersOfWine, power);

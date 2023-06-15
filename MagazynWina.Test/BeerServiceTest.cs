@@ -19,21 +19,10 @@ namespace MagazynWina.Tests
             //Arrange
             var service = new BeerService();
             //Act
-            var returnedBeerId = service.AddNewBeerToList(beer.Id, beer.Name, beer.Blg, beer.YearProduction, beer.Quantity, beer.Yeast, beer.TypeOfBeer);
+            var returnedBeer = service.AddNewBeerToList(beer.Id, beer.Name, beer.Blg, beer.YearProduction, beer.Quantity, beer.Yeast, beer.TypeOfBeer);
             //Assert
-            Assert.Equal(beer.Id, returnedBeerId.Id);
+            Assert.Equal(beer.Id, returnedBeer.Id);
         }
-
-        //[Fact]
-        //public void AddNewBeer_ProvidingAddNewBeerNotCompleted_ErrorAddingNewBeer()
-        //{
-        //    //Arrange
-        //    var service = new BeerService();
-        //    //Act
-        //    var returnedBeer = service.GetBeerDetailsById(beer.Id);
-        //    //Assert
-        //    returnedBeer.Should().BeNull();
-        //}
 
         [Fact]
         public void TestBeerRemoveById_ProvidingRemoveByIdCompleted_TestBeerRemoveByID()
@@ -43,23 +32,10 @@ namespace MagazynWina.Tests
             service.AddNewBeerToList(beer.Id, beer.Name, beer.Blg, beer.YearProduction, beer.Quantity, beer.Yeast, beer.TypeOfBeer);
             //Act
             service.DeleteBeerFromList(beer.Id);
-            var returnedBeerId = service.GetBeerDetailsById(beer.Id);
+            var returnedBeer = service.GetBeerDetailsById(beer.Id);
             //Assert
-            returnedBeerId.Should().BeNull();
+            returnedBeer.Should().BeNull();
         }
-
-        //[Fact]
-        //public void TestBeerRemoveById_ProvidingRemoveBeerByIdNotCompleted_TestBeerRemoveByIDNotCompleted()
-        //{
-        //    //Arrange
-        //    var service = new BeerService();
-        //    var returnedBeerId = service.AddNewBeerToList(beer.Id, beer.Name, beer.Blg, beer.YearProduction, beer.Quantity, beer.Yeast, beer.TypeOfBeer);
-        //    //Act
-        //    service.DeleteBeerFromList(beer.Id);
-        //    var returnedBeerId3 = service.GetBeerDetailsById(beer.Id);
-        //    //Assert
-        //    returnedBeerId3.Id.Should().Be(beer.Id);
-        //}
 
         [Fact]
         public void TestBeerDetailById_ProviddingBeerShowsDetails_ShowingBeerDetails()
@@ -68,9 +44,9 @@ namespace MagazynWina.Tests
             var service = new BeerService();
             service.AddNewBeerToList(beer.Id, beer.Name, beer.Blg, beer.YearProduction, beer.Quantity, beer.Yeast, beer.TypeOfBeer);
             //Act2
-            var returnedBeerId2 = service.GetBeerDetailsById(beer.Id);
+            var returnedBeer = service.GetBeerDetailsById(beer.Id);
             //Assert
-            returnedBeerId2.Id.Should().Be(beer.Id);
+            returnedBeer.Id.Should().Be(beer.Id);
         }
 
         [Fact]
@@ -80,9 +56,9 @@ namespace MagazynWina.Tests
             var service = new BeerService();
             int id = 10;
             //Act
-            var returnedBeerId = service.GetBeerDetailsById(id);
+            var returnedBeer = service.GetBeerDetailsById(id);
             //Assert
-            returnedBeerId.Should().BeNull();
+            returnedBeer.Should().BeNull();
         }
 
         [Fact]
@@ -133,7 +109,6 @@ namespace MagazynWina.Tests
         public void TestGetBeerById_ProviddingNotGetBeerDetailsById_DetailsBeerByIdIsntShowed()
         {
             //Arrange
-            var mockBeer = new Mock<BeerService>();
             var service = new BeerService();
             //Act
             var beerTest = service.GetBeerDetailsById(61);
