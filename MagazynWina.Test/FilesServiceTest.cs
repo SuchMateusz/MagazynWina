@@ -18,10 +18,9 @@ namespace MagazynWina.Tests
         public void AddingFirstTestList_ProvidingTestListIsCompletedAdd_TheAdditionListIsCompleted()
         {
             //Arrange
-            var mock = new Mock<FilesService>();
-            var manager = new FilesService();
+            var service = new FilesService();
             //Act
-            int iD = manager.AddingFirstTestList();
+            int iD = service.AddingFirstTestList();
             //Assert
             iD.Should().BeGreaterThan(0);
         }
@@ -34,10 +33,9 @@ namespace MagazynWina.Tests
             listWine.Add(new Wine(2, "redGrape", 1, 13, 2018, 35, "Bayanus"));
             listBeer.Add(new Beer(1, "FirstBeer", 2, 2020, 30, "yeast", "Pale Ale"));
             listBeer.Add(new Beer(2, "Second Beer", 5, 2020, 20, "yeast", "Special Biter"));
-            var mock = new Mock<FilesService>();
-            var manager = new FilesService();
+            var service = new FilesService();
             //Act
-            string savedString = manager.SavingToFile(listWine, listBeer);
+            string savedString = service.SavingToFile(listWine, listBeer);
             //Assert
             savedString.Should().NotBeEmpty();
         }
@@ -46,10 +44,9 @@ namespace MagazynWina.Tests
         public void ReadWineFromFile_ProvidingTestListReadFromFileIsCompleted_ReadWineListIsCompleted()
         {
             //Arrange
-            var mock = new Mock<FilesService>();
-            var manager = new FilesService();
+            var service = new FilesService();
             //Act
-            var readListWine = manager.ReadFromFileWine();
+            var readListWine = service.ReadFromFileWine();
             //Assert
             readListWine.Should().NotBeEmpty();
         }
@@ -58,10 +55,9 @@ namespace MagazynWina.Tests
         public void ReadBeerFromFile_ProvidingTestListReadFromFileIsCompleted_ReadBeerListIsCompleted()
         {
             //Arrange
-            var mock = new Mock<FilesService>();
-            var manager = new FilesService();
+            var service = new FilesService();
             //Act
-            var readListBeer = manager.ReadFromFileBeer();
+            var readListBeer = service.ReadFromFileBeer();
             //Assert
             readListBeer.Should().NotBeEmpty();
         }

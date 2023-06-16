@@ -127,7 +127,6 @@ namespace MagazynWina.App.Manager
             else
             {
                 Console.WriteLine("You wrote wrong type object ID");
-
             }
             Console.WriteLine("Remember to save changes to file");
         }
@@ -182,7 +181,6 @@ namespace MagazynWina.App.Manager
                 int updatedWineQuantity;
                 Int32.TryParse(Console.ReadLine(), out updatedWineQuantity);
                 _wineService.UpdateWine(productId, updatedNameWine, updatedWineBlg, updatedWineQuantity);
-
             }
 
             else if (productTypeID == 2)

@@ -39,7 +39,21 @@ namespace MagazynWina.Tests
         }
 
         [Fact]
-        public void TestObjectDetailById_ProviddingObjectShowsDetails_ShowingObjectDetails()
+        public void TestUpdatesObjectDetailsById_ProviddingUpdatesObjectDetails_UpdatesObjectDetails()
+        {
+            //Arrange
+            var service = new WineService();
+            service.AddNewWineToList(wine.Id+1, wine.Name, wine.TypeOfWine, (byte)wine.Blg, wine.YearProduction, (ushort)wine.Quantity, wine.Yeast);
+            //Act
+            var wineId = service.UpdateWine(wine.Id+1, wine.Name, 5, 10);
+            var returnedWine = service.GetWineDetailsById(wine.Id+1);
+            //Assert
+            returnedWine.Quantity.Should().Be(10);
+            returnedWine.Blg.Should().Be(5);
+        }
+
+        [Fact]
+        public void TestObjectDetailById_ProviddingObjectShowsDetailsById_ShowingObjectDetailsById()
         {
             //Arrange
             var service = new WineService();
@@ -48,55 +62,13 @@ namespace MagazynWina.Tests
             var returnedWine = service.GetWineDetailsById(wine.Id);
             //Assert
             returnedWine.Id.Should().Be(wine.Id);
-            wine.Should().BeSameAs(returnedWine);
+            returnedWine.Blg.Should().Be(wine.Blg);
+            returnedWine.TypeOfWine.Should().Be(wine.TypeOfWine);
+            returnedWine.Quantity.Should().Be(wine.Quantity);
         }
 
         [Fact]
-        public void TestUpdatesObjectDetailsById_ProviddingUpdatesObjectDetails_UpdatesObjectDetails()
-        {
-            //Arrange
-            var service = new WineService();
-            service.AddNewWineToList(wine.Id, wine.Name, wine.TypeOfWine, (byte)wine.Blg, wine.YearProduction, (ushort)wine.Quantity, wine.Yeast);
-            //Act
-            var wineId = service.UpdateWine(wine.Id, wine.Name, 5, 10);
-            var returnedWine = service.GetWineDetailsById(wine.Id);
-            //Assert
-            returnedWine.Quantity.Should().Be(10);
-            returnedWine.Blg.Should().Be(5);
-        }
-
-        //[Fact]
-        //public void TestUpdatesObjectDetailsById_ProviddingNotUpdatesObjectDetails_NotUpdatesObjectDetails()
-        //{
-        //    //Arrange
-        //    var service = new WineService();
-        //    //service.AddNewWineToList(wine.Id, wine.Name, wine.TypeOfWine, (byte)wine.Blg, wine.YearProduction, (ushort)wine.Quantity, wine.Yeast);
-        //    int newWineId = 20;
-        //    //Act
-        //    var wineId = service.UpdateWine(wine.Id, wine.Name, 5, 10);
-        //    var returnedWine = service.GetWineDetailsById(wine.Id);
-        //    //Assert
-        //    returnedWine.Should().BeNull();
-        //}
-
-        [Fact]
-        public void TestGetWineById_ProviddingGetWineDetailsById_DetailsWineById()
-        {
-            //Arrange
-            Wine wine = new Wine(1, "grape", 1, 15, 2017, 10, "Bayanus");
-            var service = new WineService();
-            service.AddNewWineToList(wine.Id, wine.Name, wine.TypeOfWine, (byte)wine.Blg, wine.YearProduction, (ushort)wine.Quantity, wine.Yeast);
-            //Act
-
-            var wine2 = service.GetWineDetailsById(wine.Id);
-            //Assert
-            wine2.Id.Should().Be(wine.Id);
-            wine2.Quantity.Should().Be(wine.Quantity);
-            wine2.Blg.Should().Be(wine.Blg);
-        }
-
-        [Fact]
-        public void TestGetWineById_ProviddingNotGetWineDetailsById_DetailsWineByIdIsntShowed()
+        public void TestGetWineById_ProviddingNotShowsWineDetailsById_DetailsWineByIdIsntShowed()
         {
             //Arrange
             var service = new WineService();
