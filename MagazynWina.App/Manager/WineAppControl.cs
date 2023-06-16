@@ -248,26 +248,31 @@ namespace MagazynWina.App.Manager
             Console.Clear();
             return productTypeID;
         }
+
         public Wine GetWineDetailsById(int id)
         {
             var wine = _wineService.GetWineDetailsById(id);
             return wine;
         }
+
         public Beer GetBeerDetailsById(int id)
         {
             var beer = _beerService.GetBeerDetailsById(id);
             return beer;
         }
+
         public int AddNewWine(Wine wine)
         {
             var wineId = _wineService.AddNewObject(wine);
             return wineId;
         }
+
         public int AddNewBeer(Beer beer1)
         {
             var beerId = _beerService.AddNewObject(beer1);
             return beerId;
         }
+
         public void OperationsOnFile()
         {
             var addNewObjectMenu = _actionService.GetMenuActionsByMenuName("AddFileMenu");
