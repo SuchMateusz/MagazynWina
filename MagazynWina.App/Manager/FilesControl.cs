@@ -21,7 +21,7 @@ namespace MagazynWina.App.Manager
         public List<Beer> listBeer = new List<Beer>();
         public WineService wineService = new WineService();
         public BeerService beerService = new BeerService();
-        public FilesService _listWineService = new FilesService();
+        public FilesHelper _listObjectsService = new FilesHelper();
 
         public void ChosingReportOperations(int operation)
         {
@@ -34,10 +34,10 @@ namespace MagazynWina.App.Manager
                     ReaderFromFile();
                     break;
                 case 3:
-                    _listWineService.ReportSaveFile();
+                    _listObjectsService.ReportSaveFile();
                     break;
                 case 4:
-                    _listWineService.ReadReportFile();
+                    _listObjectsService.ReadReportFile();
                     break;
                 case 5:
                     AddingTestList();
@@ -51,18 +51,18 @@ namespace MagazynWina.App.Manager
         {
             listWine = wineService.Objects;
             listBeer = beerService.Objects;
-            _listWineService.SavingToFile(listWine, listBeer);
+            _listObjectsService.SavingToFile(listWine, listBeer);
         }
 
         public void ReaderFromFile()
         {
-            listWine = _listWineService.ReadFromFileWine();
-            listBeer = _listWineService.ReadFromFileBeer();
+            listWine = _listObjectsService.ReadFromFileWine();
+            listBeer = _listObjectsService.ReadFromFileBeer();
         }
 
         public void AddingTestList()
         {
-            _listWineService.AddingFirstTestList();
+            _listObjectsService.AddingFirstTestList();
         }
     }
 }

@@ -15,7 +15,7 @@ using System.IO;
 
 namespace MagazynWina.App.Concrete
 {
-    public class FilesService
+    public class FilesHelper
     {
         public string outputWine;
         public string outputBeer;

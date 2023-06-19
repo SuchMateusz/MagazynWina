@@ -18,7 +18,7 @@ namespace MagazynWina.Tests
         public void AddingFirstTestList_ProvidingTestListIsCompletedAdd_TheAdditionListIsCompleted()
         {
             //Arrange
-            var service = new FilesService();
+            var service = new FilesHelper();
             //Act
             int iD = service.AddingFirstTestList();
             //Assert
@@ -33,7 +33,7 @@ namespace MagazynWina.Tests
             listWine.Add(new Wine(2, "redGrape", 1, 13, 2018, 35, "Bayanus"));
             listBeer.Add(new Beer(1, "FirstBeer", 2, 2020, 30, "yeast", "Pale Ale"));
             listBeer.Add(new Beer(2, "Second Beer", 5, 2020, 20, "yeast", "Special Biter"));
-            var service = new FilesService();
+            var service = new FilesHelper();
             //Act
             string savedString = service.SavingToFile(listWine, listBeer);
             //Assert
@@ -44,7 +44,7 @@ namespace MagazynWina.Tests
         public void ReadWineFromFile_ProvidingTestListReadFromFileIsCompleted_ReadWineListIsCompleted()
         {
             //Arrange
-            var service = new FilesService();
+            var service = new FilesHelper();
             //Act
             var readListWine = service.ReadFromFileWine();
             //Assert
@@ -55,7 +55,7 @@ namespace MagazynWina.Tests
         public void ReadBeerFromFile_ProvidingTestListReadFromFileIsCompleted_ReadBeerListIsCompleted()
         {
             //Arrange
-            var service = new FilesService();
+            var service = new FilesHelper();
             //Act
             var readListBeer = service.ReadFromFileBeer();
             //Assert
