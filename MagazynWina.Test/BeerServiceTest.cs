@@ -11,13 +11,12 @@ namespace MagazynWina.Tests
 {
     public class BeerServiceTest
     {
-        Beer beer = new Beer(0, "nameTest", 0, 0, 0, "yeast", "PaleAle");
-
         [Fact]
         public void AddNewBeer_ProvidingAddNewBeerComplete_AddingNewBeer()
         {
             //Arrange
             var service = new BeerService();
+            Beer beer = GenerateNewBeerForTest();
             //Act
             var returnedBeer = service.AddNewBeerToList(beer.Id, beer.Name, beer.Blg, beer.YearProduction, beer.Quantity, beer.Yeast, beer.TypeOfBeer);
             //Assert
@@ -29,6 +28,7 @@ namespace MagazynWina.Tests
         {
             //Arrange
             var service = new BeerService();
+            Beer beer = GenerateNewBeerForTest();
             service.AddNewBeerToList(beer.Id, beer.Name, beer.Blg, beer.YearProduction, beer.Quantity, beer.Yeast, beer.TypeOfBeer);
             //Act
             service.DeleteBeerFromList(beer.Id);
@@ -42,6 +42,7 @@ namespace MagazynWina.Tests
         {
             //Arrange
             var service = new BeerService();
+            Beer beer = GenerateNewBeerForTest();
             service.AddNewBeerToList(beer.Id+1, beer.Name, beer.Blg, beer.YearProduction, beer.Quantity, beer.Yeast, beer.TypeOfBeer);
             //Act
             var beerId = service.UpdateBeer(beer.Id+1, beer.Name, 5, 10);
@@ -56,6 +57,7 @@ namespace MagazynWina.Tests
         {
             //Arrange
             var service = new BeerService();
+            Beer beer = GenerateNewBeerForTest();
             service.AddNewBeerToList(beer.Id, beer.Name, beer.Blg, beer.YearProduction, beer.Quantity, beer.Yeast, beer.TypeOfBeer);
             //Act2
             var returnedBeer = service.GetBeerDetailsById(beer.Id);
@@ -103,6 +105,12 @@ namespace MagazynWina.Tests
             int id = service.GetAllBeerObjects();
             //Assert
             id.Should().Be(0);
+        }
+
+        private Beer GenerateNewBeerForTest()
+        {
+            Beer beer = new Beer(0, "nameTest", 0, 0, 0, "yeast", "PaleAle");
+            return beer;
         }
     }
 }

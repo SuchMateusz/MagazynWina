@@ -12,13 +12,12 @@ namespace MagazynWina.Tests
 {
     public class WineServiceTest
     {
-        Wine wine = new Wine(0, "nameTest", 0, 0, 0, 0, "yeast");
-
         [Fact]
         public void AddNewWine_ProvidingAddNewWineComplete_AddingNewWine()
         {
             //Arrange
             var service = new WineService();
+            Wine wine = GenerateNewWineForTests();
             //Act
             var returnedWineId = service.AddNewWineToList(wine.Id, wine.Name, wine.TypeOfWine, (byte)wine.Blg, wine.YearProduction, (ushort) wine.Quantity, wine.Yeast);
             //Assert
@@ -30,6 +29,7 @@ namespace MagazynWina.Tests
         {
             //Arrange
             var service = new WineService();
+            Wine wine = GenerateNewWineForTests();
             service.AddNewWineToList(wine.Id, wine.Name, wine.TypeOfWine, (byte)wine.Blg, wine.YearProduction, (ushort)wine.Quantity, wine.Yeast);
             //Act
             service.DeleteWineFromList(wine.Id);
@@ -43,6 +43,7 @@ namespace MagazynWina.Tests
         {
             //Arrange
             var service = new WineService();
+            Wine wine = GenerateNewWineForTests();
             service.AddNewWineToList(wine.Id+1, wine.Name, wine.TypeOfWine, (byte)wine.Blg, wine.YearProduction, (ushort)wine.Quantity, wine.Yeast);
             //Act
             var wineId = service.UpdateWine(wine.Id+1, wine.Name, 5, 10);
@@ -57,6 +58,7 @@ namespace MagazynWina.Tests
         {
             //Arrange
             var service = new WineService();
+            Wine wine = GenerateNewWineForTests();
             service.AddNewWineToList(wine.Id, wine.Name, wine.TypeOfWine, (byte)wine.Blg, wine.YearProduction, (ushort)wine.Quantity, wine.Yeast);
             //Act
             var returnedWine = service.GetWineDetailsById(wine.Id);
@@ -131,6 +133,12 @@ namespace MagazynWina.Tests
             int neededSugar = service.SuggarForNewWine(addedSugar, litersOfWine, power);
             //Assert
             neededSugar.Should().BeNegative();
+        }
+
+        private Wine GenerateNewWineForTests()
+        {
+            Wine wine = new Wine(0, "nameTest", 0, 0, 0, 0, "yeast");
+            return wine;
         }
     }
 }
