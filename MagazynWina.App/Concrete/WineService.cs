@@ -23,16 +23,16 @@ namespace MagazynWina.App.Concrete
         public void DeleteWineFromList(int wineID)
         {
             GetAllWineObjects();
-            var deletedWine = Objects[wineID];
+            var deletedWine = Objects.Find(x => x.Id == wineID);
             DeleteObject(deletedWine);
             Console.WriteLine("List of wine after deleted selected wine: \n");
             GetAllWineObjects();
             Objects.OrderBy(i => i.Id);
             if (wineID > 0)
             {
-                for (int i = wineID - 1; i < Objects.Count; i++)
+                for (int i = wineID+1; i <= Objects.Count+1; i++)
                 {
-                    Objects.Find(x => x.Id == wineID).Id = Objects.Find(x => x.Id == wineID).Id - 1;
+                    Objects.Find(x => x.Id == i).Id = Objects.Find(x => x.Id == i).Id - 1;
                 }
             }
         }

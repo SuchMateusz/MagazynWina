@@ -28,9 +28,9 @@ namespace MagazynWina.App.Concrete
             Objects.OrderBy(i => i.Id);
             if(beerId>0)
             {
-                for (int i = beerId - 1; i < Objects.Count; i++)
+                for (int i = beerId + 1; i <= Objects.Count + 1; i++)
                 {
-                    Objects.Find(x => x.Id == beerId).Id = Objects.Find(x => x.Id == beerId).Id - 1;
+                    Objects.Find(x => x.Id == i).Id = Objects.Find(x => x.Id == i).Id - 1;
                 }
             }
         }
