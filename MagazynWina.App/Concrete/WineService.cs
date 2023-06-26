@@ -15,6 +15,7 @@ namespace MagazynWina.App.Concrete
 
         public int AddNewWineToList(int wineId, string nameWine, int typeOfWine, byte Blg, int year, ushort quantity, string yeast)
         {
+            wineId = GetLastId() + 1;
             Wine wine = new Wine(wineId, nameWine, typeOfWine, Blg, year, quantity, yeast);
             AddNewObject(wine);
             return wineId;
@@ -89,6 +90,17 @@ namespace MagazynWina.App.Concrete
             int neededSugar;
             neededSugar = (17 * power * litersOfWine) - addedSugar;
             return neededSugar;
+        }
+
+        private int GetLastId()
+        {
+            if (Objects.Count == 0)
+            {
+                return 0;
+            }
+
+            int LastId = Objects.Last().Id;
+            return LastId;
         }
     }
 }

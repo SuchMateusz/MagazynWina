@@ -14,6 +14,7 @@ namespace MagazynWina.App.Concrete
     { 
         public Beer AddNewBeerToList(int beerId, string nameBeer, int Blg, int year, int quantity, string yeast, string typeOfBeer)
         {
+            beerId = GetLastId() + 1;
             Beer beer = new Beer(beerId, nameBeer, Blg, year, quantity, yeast, typeOfBeer);
             AddNewObject(beer);
             return beer;
@@ -22,7 +23,7 @@ namespace MagazynWina.App.Concrete
         public void DeleteBeerFromList(int beerId)
         {
             GetAllBeerObjects();
-            var deletedBeer = Objects[beerId];
+            var deletedBeer = Objects.Find(x => x.Id == beerId);
             DeleteObject(deletedBeer);
             GetAllBeerObjects();
             Objects.OrderBy(i => i.Id);
@@ -79,6 +80,17 @@ namespace MagazynWina.App.Concrete
                 Console.WriteLine($"\nBeer id: {beer.Id} beer name: {beer.Name} beer Blg: {beer.Blg} beer year: {beer.YearProduction} beer bootle: {beer.Quantity} beer yeast {beer.Yeast} beer {beer.TypeOfBeer}");
             }
             return Objects.Count();
+        }
+
+        private int GetLastId()
+        {
+            if (Objects.Count == 0)
+            {
+                return 0;
+            }
+
+            int LastId = Objects.Last().Id;
+            return LastId;
         }
     }
 }

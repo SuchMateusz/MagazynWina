@@ -45,7 +45,7 @@ namespace MagazynWina.Tests
             Beer beer = GenerateNewBeerForTest();
             service.AddNewBeerToList(beer.Id+1, beer.Name, beer.Blg, beer.YearProduction, beer.Quantity, beer.Yeast, beer.TypeOfBeer);
             //Act
-            var beerId = service.UpdateBeer(beer.Id+1, beer.Name, 5, 10);
+            var beerId = service.UpdateBeer(beer.Id, beer.Name, 5, 10);
             var returnedBeer = service.GetBeerDetailsById(beerId);
             //Assert
             returnedBeer.Quantity.Should().Be(10);
@@ -107,9 +107,27 @@ namespace MagazynWina.Tests
             id.Should().Be(0);
         }
 
+        [Fact]
+        public void TestNewBeerId_ProviddingAddNewBeerWithNewId_AddingDifferentIdForNewBeers()
+        {
+            //Arrange
+            var service = new BeerService();
+            Beer beerTest1 = GenerateNewBeerForTest();
+            service.AddNewBeerToList(beerTest1.Id, beerTest1.Name, beerTest1.Blg, beerTest1.YearProduction, beerTest1.Quantity, beerTest1.Yeast, beerTest1.TypeOfBeer);
+            service.AddNewBeerToList(beerTest1.Id, beerTest1.Name, beerTest1.Blg, beerTest1.YearProduction, beerTest1.Quantity, beerTest1.Yeast, beerTest1.TypeOfBeer);
+            //Act
+            var returnedBeer = service.GetBeerDetailsById(beerTest1.Id);
+            var returnedBeer2 = service.GetBeerDetailsById(beerTest1.Id+ 1);
+            //Assert
+            returnedBeer.Id.Should().Be(beerTest1.Id);
+            returnedBeer2.Id.Should().NotBe(beerTest1.Id);
+            returnedBeer2.Id.Should().Be(2);
+            returnedBeer2.Id.Should().BeGreaterThan(returnedBeer.Id);
+        }
+
         private Beer GenerateNewBeerForTest()
         {
-            Beer beer = new Beer(0, "nameTest", 0, 0, 0, "yeast", "PaleAle");
+            Beer beer = new Beer(1, "nameTest", 0, 0, 0, "yeast", "PaleAle");
             return beer;
         }
     }
