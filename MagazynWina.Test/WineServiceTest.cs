@@ -33,8 +33,8 @@ namespace MagazynWina.Tests
             service.AddNewWineToList(wine.Id, wine.Name, wine.TypeOfWine, (byte)wine.Blg, wine.YearProduction, (ushort)wine.Quantity, wine.Yeast);
             //Act
             service.DeleteWineFromList(wine.Id);
-            var returnedWine = service.GetWineDetailsById(wine.Id);
             //Assert
+            var returnedWine = service.GetWineDetailsById(wine.Id);
             returnedWine.Should().BeNull();
         }
 
@@ -47,8 +47,8 @@ namespace MagazynWina.Tests
             service.AddNewWineToList(wine.Id, wine.Name, wine.TypeOfWine, (byte)wine.Blg, wine.YearProduction, (ushort)wine.Quantity, wine.Yeast);
             //Act
             var wineId = service.UpdateWine(wine.Id, wine.Name, 5, 10);
-            var returnedWine = service.GetWineDetailsById(wine.Id);
             //Assert
+            var returnedWine = service.GetWineDetailsById(wine.Id);
             returnedWine.Quantity.Should().Be(10);
             returnedWine.Blg.Should().Be(5);
         }

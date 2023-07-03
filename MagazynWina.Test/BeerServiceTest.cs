@@ -32,8 +32,8 @@ namespace MagazynWina.Tests
             service.AddNewBeerToList(beer.Id, beer.Name, beer.Blg, beer.YearProduction, beer.Quantity, beer.Yeast, beer.TypeOfBeer);
             //Act
             service.DeleteBeerFromList(beer.Id);
-            var returnedBeer = service.GetBeerDetailsById(beer.Id);
             //Assert
+            var returnedBeer = service.GetBeerDetailsById(beer.Id);
             returnedBeer.Should().BeNull();
         }
 
@@ -46,8 +46,8 @@ namespace MagazynWina.Tests
             service.AddNewBeerToList(beer.Id+1, beer.Name, beer.Blg, beer.YearProduction, beer.Quantity, beer.Yeast, beer.TypeOfBeer);
             //Act
             var beerId = service.UpdateBeer(beer.Id, beer.Name, 5, 10);
-            var returnedBeer = service.GetBeerDetailsById(beerId);
             //Assert
+            var returnedBeer = service.GetBeerDetailsById(beerId);
             returnedBeer.Quantity.Should().Be(10);
             returnedBeer.Blg.Should().Be(5);
         }
@@ -83,11 +83,10 @@ namespace MagazynWina.Tests
         public void TestGetAllBeersObject_ProviddingGetAllBeersObjects_GetAllBeersObjects()
         {
             //Arrange
-            Beer beerTest1 = new Beer(1, "nameTest1", 3, 20, 2020, "yeast", "PaleAle");
-            Beer beerTest2 = new Beer(2, "nameTest3", 1, 50, 2021, "yeast", "PaleAle");
+            Beer beerTest1 = GenerateNewBeerForTest();
             var service = new BeerService();
             service.AddNewBeerToList(beerTest1.Id, beerTest1.Name, beerTest1.Blg, beerTest1.YearProduction, beerTest1.Quantity, beerTest1.Yeast, beerTest1.TypeOfBeer);
-            service.AddNewBeerToList(beerTest2.Id, beerTest2.Name, beerTest2.Blg, beerTest2.YearProduction, beerTest2.Quantity, beerTest2.Yeast, beerTest2.TypeOfBeer);
+            service.AddNewBeerToList(beerTest1.Id, beerTest1.Name, beerTest1.Blg, beerTest1.YearProduction, beerTest1.Quantity, beerTest1.Yeast, beerTest1.TypeOfBeer);
             //Act
             int id = service.GetAllBeerObjects();
             //Assert
@@ -98,8 +97,6 @@ namespace MagazynWina.Tests
         public void TestGetNotAllBeersObject_ProviddingGetNoOneBeerObjects_GetNoOneBeerObjects()
         {
             //Arrange
-            Beer beerTest1 = new Beer(1, "nameTest1", 3, 20, 2020, "yeast", "PaleAle");
-            Beer beerTest2 = new Beer(2, "nameTest2", 1, 50, 2021, "yeast", "PaleAle");
             var service = new BeerService();
             //Act
             int id = service.GetAllBeerObjects();
