@@ -90,7 +90,6 @@ namespace MagazynWina.App.Manager
                 Int32.TryParse(Console.ReadLine(), out quantity);
                 Console.WriteLine("Write which yeast you used: ");
                 string yeast = Console.ReadLine();
-
                 Console.WriteLine("Write what type of beer you producted (Pale Ale, Bitter, IPA etc.): ");
                 string typeOfBeer = Console.ReadLine();
                 _beerService.AddNewBeerToList(beerId, nameBeer, Blg, year, quantity, yeast, typeOfBeer);
@@ -102,6 +101,9 @@ namespace MagazynWina.App.Manager
             {
                 Console.WriteLine("You wrote wrong type object ID");
             }
+
+            int saveToFile = 1;
+            _filesControl.ChosingReportOperations(saveToFile, _wineService.Objects, _beerService.Objects);
         }
         public void DeleteObject()
         {
@@ -129,6 +131,8 @@ namespace MagazynWina.App.Manager
                 Console.WriteLine("You wrote wrong type object ID");
             }
             Console.WriteLine("Remember to save changes to file");
+            int saveToFile = 1;
+            _filesControl.ChosingReportOperations(saveToFile, _wineService.Objects, _beerService.Objects);
         }
 
         public void GetAllObjects()
