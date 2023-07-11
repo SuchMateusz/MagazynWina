@@ -48,7 +48,7 @@ namespace MagazynWina.App.Manager
 
                 var WineType = Console.ReadKey();
                 int chosenWineType;
-                Int32.TryParse(operation.KeyChar.ToString(), out chosenWineType);
+                Int32.TryParse(WineType.KeyChar.ToString(), out chosenWineType);
                 Console.WriteLine("\nEnter id for new wine: ");
                 var id = Console.ReadLine();
                 int wineId;
@@ -285,7 +285,7 @@ namespace MagazynWina.App.Manager
             var keyOption = Console.ReadLine();
             int operation;
             Int32.TryParse(keyOption, out operation);
-            _filesControl.ChosingReportOperations(operation);
+            _filesControl.ChosingReportOperations(operation, _wineService.Objects, _beerService.Objects);
             _wineService.Objects = _filesControl.listWine;
             _beerService.Objects = _filesControl.listBeer;
         }

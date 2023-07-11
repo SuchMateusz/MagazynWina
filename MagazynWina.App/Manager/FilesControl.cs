@@ -19,19 +19,18 @@ namespace MagazynWina.App.Manager
         public string output;
         public List<Wine> listWine = new List<Wine>();
         public List<Beer> listBeer = new List<Beer>();
-        public WineService wineService = new WineService();
-        public BeerService beerService = new BeerService();
         public FilesHelper _listObjectsService = new FilesHelper();
 
-        public void ChosingReportOperations(int operation)
+        public void ChosingReportOperations(int operation, List<Wine> listWines, List<Beer> listBeers)
         {
             switch (operation)
             {
                 case 1:
-                    SaveToFile();
+                    SaveToFile(listWines, listBeers);
                     break;
                 case 2:
                     ReaderFromFile();
+
                     break;
                 case 3:
                     _listObjectsService.ReportSaveFile();
@@ -47,10 +46,10 @@ namespace MagazynWina.App.Manager
             }
         }
 
-        public void SaveToFile()
+        public void SaveToFile(List<Wine> listWines, List<Beer> listBeers)
         {
-            listWine = wineService.Objects;
-            listBeer = beerService.Objects;
+            listWine = listWines;
+            listBeer = listBeers;
             _listObjectsService.SavingToFile(listWine, listBeer);
         }
 
