@@ -42,27 +42,33 @@ namespace MagazynWina.App.Concrete
             listBeer.Add(new Beer(2, "Second Beer", 5, 2020, 20, "yeast", "Special Biter"));
             listBeer.Add(new Beer(3, "The best Beer", 0, 2021, 40, "yeast", "Austarial Pale Ale"));
             listBeer.Add(new Beer(4, "Good Beer", 3, 2021, 50, "yeast", "Ale"));
-            SavingToFile(listWine, listBeer);
+            SavingToFileWine(listWine);
+            SavingToFileBeer(listBeer);
             return listWine.Count;
         }
 
-        public string SavingToFile(List<Wine> listWine, List<Beer> listBeer)
+        public string SavingToFileWine(List<Wine> listWine)
         {
             var sortListWine = listWine.OrderBy(i => i.Id).ThenBy(i => i.TypeOfWine);
-            var sortListBeer = listBeer.OrderBy(i => i.Id).ThenBy(i => i.TypeOfBeer);
             sw = StreamWriterFile(wine);
             jWriter = new JsonTextWriter(sw);
             serializer.Serialize(jWriter, sortListWine);
             sw.Close();
+            string jsonFromFileWine = ReadFromFile(wine);
+            string wineString = ClosingFile(wine);
+            return wineString;
+        }
+
+        public string SavingToFileBeer(List<Beer> listBeer)
+        {
+            var sortListBeer = listBeer.OrderBy(i => i.Id).ThenBy(i => i.TypeOfBeer);
             sw = StreamWriterFile(beer);
             jWriter = new JsonTextWriter(sw);
             serializer.Serialize(jWriter, sortListBeer);
             sw.Close();
-            string jsonFromFileWine = ReadFromFile(wine);
             string jsonFromFileBeer = ReadFromFile(beer);
-            string wineString = ClosingFile(wine);
             string beerString = ClosingFile(beer);
-            return wineString + beerString;
+            return beerString;
         }
 
         public List<Wine> ReadFromFileWine()

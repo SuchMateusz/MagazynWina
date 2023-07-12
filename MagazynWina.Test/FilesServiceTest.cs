@@ -34,9 +34,11 @@ namespace MagazynWina.Tests
             listBeer.Add(new Beer(2, "Second Beer", 5, 2020, 20, "yeast", "Special Biter"));
             var service = new FilesHelper();
             //Act
-            string savedString = service.SavingToFile(listWine, listBeer);
+            string savedStringWine = service.SavingToFileWine(listWine);
+            string savedStringBeer = service.SavingToFileBeer(listBeer);
             //Assert
-            savedString.Should().NotBeEmpty();
+            savedStringWine.Should().NotBeEmpty();
+            savedStringBeer.Should().NotBeEmpty();
         }
 
         [Fact]
@@ -44,7 +46,7 @@ namespace MagazynWina.Tests
         {
             //Arrange
             var service = new FilesHelper();
-            SaveDataWineBeer();
+            SaveDataWine();
             //Act
             var readListWine = service.ReadFromFileWine();
             //Assert
@@ -56,21 +58,26 @@ namespace MagazynWina.Tests
         {
             //Arrange
             var service = new FilesHelper();
-            SaveDataWineBeer();
+            SaveDataBeer();
             //Act
             var readListBeer = service.ReadFromFileBeer();
             //Assert
             readListBeer.Should().NotBeEmpty();
         }
 
-        private void SaveDataWineBeer()
+        private void SaveDataWine()
         {
             var service = new FilesHelper();
             List<Wine> listWine = new List<Wine>();
-            List<Beer> listBeer = new List<Beer>();
             listWine.Add(new Wine(6, "redCurant", 1, 10, 2021, 40, "Bayanus"));
+            string savedString = service.SavingToFileWine(listWine);
+        }
+        private void SaveDataBeer()
+        {
+            var service = new FilesHelper();
+            List<Beer> listBeer = new List<Beer>();
             listBeer.Add(new Beer(1, "FirstBeer", 2, 2020, 30, "yeast", "Pale Ale"));
-            string savedString = service.SavingToFile(listWine, listBeer);
+            string savedString = service.SavingToFileBeer(listBeer);
         }
     }
 }

@@ -17,8 +17,8 @@ namespace MagazynWina
             MenuActionService actionService = new MenuActionService();
             WineService wineService = new WineService();
             BeerService beerService = new BeerService();
-            FilesControl filesControl = new FilesControl();
-            WineAppControl wineAppControl = new WineAppControl(actionService, wineService, beerService);
+            FilesHelper filesHelper = new FilesHelper();
+            WineAppControl wineAppControl = new WineAppControl(actionService, wineService, beerService, filesHelper);
             Console.WriteLine("Welcome in my application");
             while (true)
             {
