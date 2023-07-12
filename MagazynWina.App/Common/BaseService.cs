@@ -52,7 +52,6 @@ namespace MagazynWina.App.Common
         public bool CheckObjectAmount(int quantity)
         {
             bool lowAmount;
-            string check;
             if (quantity <= 10)
                 lowAmount = true;
             else

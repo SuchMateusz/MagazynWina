@@ -29,8 +29,7 @@ namespace MagazynWina.App.Manager
                     SaveToFile(listWines, listBeers);
                     break;
                 case 2:
-                    ReaderFromFile();
-
+                    ReaderObjectsFromFile();
                     break;
                 case 3:
                     _listObjectsService.ReportSaveFile();
@@ -53,7 +52,7 @@ namespace MagazynWina.App.Manager
             _listObjectsService.SavingToFile(listWine, listBeer);
         }
 
-        public void ReaderFromFile()
+        public void ReaderObjectsFromFile()
         {
             listWine = _listObjectsService.ReadFromFileWine();
             listBeer = _listObjectsService.ReadFromFileBeer();

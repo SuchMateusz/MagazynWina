@@ -67,7 +67,7 @@ namespace MagazynWina.App.Manager
                 Console.WriteLine("Write which yeast you used: ");
                 string yeast = Console.ReadLine();
                 _wineService.AddNewWineToList(wineId, nameWine, chosenWineType, Blg, year, quantity, yeast);
-                Console.WriteLine("Remember to save changes to file");
+                _filesControl.SaveToFile(_wineService.Objects, _beerService.Objects);
                 Console.Clear();
             }
 
@@ -93,7 +93,7 @@ namespace MagazynWina.App.Manager
                 Console.WriteLine("Write what type of beer you producted (Pale Ale, Bitter, IPA etc.): ");
                 string typeOfBeer = Console.ReadLine();
                 _beerService.AddNewBeerToList(beerId, nameBeer, Blg, year, quantity, yeast, typeOfBeer);
-                Console.WriteLine("Remember to save changes to file");
+                _filesControl.SaveToFile(_wineService.Objects, _beerService.Objects);
                 Console.Clear();
             }
 
@@ -101,10 +101,8 @@ namespace MagazynWina.App.Manager
             {
                 Console.WriteLine("You wrote wrong type object ID");
             }
-
-            int saveToFile = 1;
-            _filesControl.ChosingReportOperations(saveToFile, _wineService.Objects, _beerService.Objects);
         }
+
         public void DeleteObject()
         {
             int productTypeID = ChoiseObjectTypeId();
@@ -117,6 +115,7 @@ namespace MagazynWina.App.Manager
                 Int32.TryParse(id, out wineID);
                 _wineService.DeleteWineFromList(wineID);
                 Console.WriteLine("Deleted wine completed: ");
+                _filesControl.SaveToFile(_wineService.Objects, _beerService.Objects);
             }
             else if (productTypeID == 2)
             {
@@ -125,14 +124,12 @@ namespace MagazynWina.App.Manager
                 int beerId;
                 Int32.TryParse(id, out beerId);
                 _beerService.DeleteBeerFromList(beerId);
+                _filesControl.SaveToFile(_wineService.Objects, _beerService.Objects);
             }
             else
             {
                 Console.WriteLine("You wrote wrong type object ID");
             }
-            Console.WriteLine("Remember to save changes to file");
-            int saveToFile = 1;
-            _filesControl.ChosingReportOperations(saveToFile, _wineService.Objects, _beerService.Objects);
         }
 
         public void GetAllObjects()
@@ -211,8 +208,7 @@ namespace MagazynWina.App.Manager
             {
                 Console.WriteLine("You wrote wrong type object ID");
             }
-
-            Console.WriteLine("Remember to save changes to file");
+            _filesControl.SaveToFile(_wineService.Objects, _beerService.Objects);
         }
 
         public void SugarAdd()
@@ -290,8 +286,11 @@ namespace MagazynWina.App.Manager
             int operation;
             Int32.TryParse(keyOption, out operation);
             _filesControl.ChosingReportOperations(operation, _wineService.Objects, _beerService.Objects);
-            _wineService.Objects = _filesControl.listWine;
-            _beerService.Objects = _filesControl.listBeer;
+            if(operation == 2)
+            {
+                _wineService.Objects = _filesControl.listWine;
+                _beerService.Objects = _filesControl.listBeer;
+            }
         }
     }
 }
